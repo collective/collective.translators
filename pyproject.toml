@@ -1,82 +1,8 @@
-[project]
-name = "collective.translators"
-dynamic = ["version"]
-description = "Pluggable external translation utilities for Plone"
-readme = "README.md"
-license = "GPL-2.0-only"
-requires-python = ">=3.11, <3.14"
-authors = [
-  { name = "Mauro Amico", email = "mauro.amico@gmail.com" },
-  { name = "Mikel Larreategi", email = "mlarreategi@codesyntax.com" },
-]
-keywords = ["CMS", "Plone", "Python"]
-classifiers = [
-  "Development Status :: 4 - Beta",
-  "Environment :: Web Environment",
-  "Framework :: Plone",
-  "Framework :: Plone :: 6.1",
-  "Framework :: Plone :: Addon",
-  "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
-  "Operating System :: OS Independent",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: 3.14",
-]
-dependencies = [
-  "Products.CMFPlone",
-  "plone.api",
-  "plone.app.multilingual",
-  "requests",
-]
-
-[project.optional-dependencies]
-test = [
-  "horse-with-no-namespace",
-  "plone.app.testing",
-  "pytest",
-  "pytest-cov",
-  "pytest-plone>=0.5.0",
-]
-release = [
-  "zest.releaser[recommended]",
-  "zestreleaser.towncrier",
-  "zest.pocompile",
-]
-aws = ["boto3"]
-deepseek = ["openai"]
-deepl = ["deepl"]
-ollama = ["ollama"]
-
-
-[project.urls]
-Homepage = "https://github.com/collective/collective.translators"
-PyPI = "https://pypi.org/project/collective.translators"
-Source = "https://github.com/collective/collective.translators"
-Tracker = "https://github.com/collective/collective.translators/issues"
-
-[project.entry-points."plone.autoinclude.plugin"]
-target = "plone"
-
-[tool.uv]
-managed = false
-
-[tool.hatch.version]
-path = "src/collective/translators/__init__.py"
-
+# Generated from:
+# https://github.com/plone/meta/tree/main/src/plone/meta/default
+# See the inline comments on how to expand/tweak this configuration file
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.hatch.build]
-strict-naming = true
-
-[tool.hatch.build.targets.sdist]
-exclude = ["/.github"]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/collective/translators"]
+requires = ["setuptools>=68.2,<80", "wheel"]
 
 [tool.towncrier]
 directory = "news/"
@@ -113,7 +39,7 @@ showcontent = true
 
 [[tool.towncrier.type]]
 directory = "tests"
-name = "Tests"
+name = "Tests:"
 showcontent = true
 
 ##
@@ -147,7 +73,7 @@ target-version = ["py38"]
 ##
 
 [tool.codespell]
-ignore-words-list = "discreet,vew"
+ignore-words-list = "discreet,assertin,thet,vew"
 skip = "*.po,*.min.js"
 ##
 # Add extra configuration options in .meta.toml:
@@ -274,7 +200,12 @@ Zope = [
   'Products.CMFDynamicViewFTI',
 ]
 python-dateutil = ['dateutil']
-pytest-plone = ['pytest', 'plone.testing', 'plone.app.testing']
+pytest-plone = [
+  'pytest',
+  'zope.pytestlayer',
+  'plone.testing',
+  'plone.app.testing',
+]
 ignore-packages = [
   'plone.app.iterate',
   'plone.app.upgrade',
@@ -328,6 +259,3 @@ ignore = [
 #  _your own configuration lines_
 #  """
 ##
-
-[tool.zest-releaser]
-python-file-with-version = "src/collective/translators/__init__.py"
