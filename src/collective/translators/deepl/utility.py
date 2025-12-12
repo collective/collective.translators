@@ -104,7 +104,7 @@ class DeeplTranslatorFactory:
                     return res.text
                 except deepl.DeepLException:
                     return ""
-            return "Language not supported"
+            return ""
 
 
 DeeplTranslator = DeeplTranslatorFactory()
