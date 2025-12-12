@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="collective.translators"
+>
+  <!-- DeepSeek Control Panel -->
+  <records interface="collective.translators.interfaces.IGoogleTranslateControlPanel">
+    <value key="enabled">False</value>
+    <value key="order">30</value>
+    <value key="source_languages" />
+    <value key="target_languages" />
+    <value key="api_key">YOUR_GOOGLETRANSLATE_API_KEY</value>
+  </records>
+</registry>

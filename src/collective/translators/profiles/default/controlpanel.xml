@@ -47,4 +47,16 @@
   >
     <permission>Manage portal</permission>
   </configlet>
+
+  <configlet action_id="google-translate-controlpanel"
+             appId="google-translate-controlpanel"
+             category="Products"
+             title="Google Translate Settings"
+             url_expr="string:${portal_url}/@@google-translate-controlpanel"
+             visible="True"
+             i18n:attributes="title"
+  >
+    <permission>Manage portal</permission>
+  </configlet>
+
 </object>
