@@ -1,6 +1,6 @@
+from .controlpanel import IDeepSeekControlPanel
 from openai import OpenAI
 from plone import api
-from .controlpanel import IDeepSeekControlPanel
 
 
 class DeepSeekFactory:

@@ -1,5 +1,5 @@
-from plone import api
 from .controlpanel import IGoogleTranslateControlPanel
+from plone import api
 
 import json
 import urllib

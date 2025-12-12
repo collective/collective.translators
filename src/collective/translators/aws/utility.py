@@ -1,11 +1,10 @@
-from plone import api
 from .controlpanel import IAWSTranslateControlPanel
+from plone import api
 
 import boto3
 
 
 class AWSTranslatorFactory:
-
     @property
     def order(self):
         return api.portal.get_registry_record(

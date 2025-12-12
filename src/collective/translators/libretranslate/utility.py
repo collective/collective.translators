@@ -1,10 +1,10 @@
-import requests
-from plone import api
 from .controlpanel import ILibreTranslateControlPanel
+from plone import api
+
+import requests
 
 
 class LibreTranslateTranslatorFactory:
-
     # TODO: manage settings in the registry
 
     server_url = "http://localhost:5000"

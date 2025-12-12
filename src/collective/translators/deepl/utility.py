@@ -1,7 +1,7 @@
+from .controlpanel import IDeeplControlPanel
 from plone import api
 
 import deepl
-from .controlpanel import IDeeplControlPanel
 
 
 class DeeplTranslatorFactory:
