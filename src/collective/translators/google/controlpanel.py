@@ -10,7 +10,7 @@ from zope.interface import Interface
 class IGoogleTranslateControlPanel(IControlPanel):
     api_key = schema.TextLine(
         title=_("API Key"),
-        description=_("The API key for the Goole Translate service."),
+        description=_("The API key for the Google Translate service."),
         required=False,
     )
 
