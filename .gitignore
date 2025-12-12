@@ -50,3 +50,4 @@ var/
 #  _your own configuration lines_
 #  """
 ##
+.mxdev_cache
