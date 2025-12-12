@@ -24,7 +24,12 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
 ]
-dependencies = ["Products.CMFPlone", "plone.api", "plone.app.multilingual"]
+dependencies = [
+  "Products.CMFPlone",
+  "plone.api",
+  "plone.app.multilingual",
+  "requests",
+]
 
 [project.optional-dependencies]
 test = [
@@ -39,6 +44,11 @@ release = [
   "zestreleaser.towncrier",
   "zest.pocompile",
 ]
+ollama = ["ollama"]
+deepl = ["deepl"]
+aws = ["boto3"]
+deepseek = ["openai"]
+
 
 [project.urls]
 Homepage = "https://github.com/collective/collective.translators"
