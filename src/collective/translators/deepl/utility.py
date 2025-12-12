@@ -1,11 +1,10 @@
 from plone import api
 
 import deepl
+from .controlpanel import IDeeplControlPanel
 
 
 class DeeplTranslatorFactory:
-    order = 30
-
     # TODO: manage settings in the registry
     # Free API -> https://api-free.deepl.com
     # Pro API -> https://api.deepl.com
@@ -14,20 +13,22 @@ class DeeplTranslatorFactory:
     autodetect_source_language = False
 
     @property
+    def order(self):
+        return api.portal.get_registry_record(
+            name="order", interface=IDeeplControlPanel
+        )
+
+    @property
     def translator(self):
         api_key = api.portal.get_registry_record(
-            "collective.translators.interfaces.IDeeplControlPanel.api_key"
+            name="api_key", interface=IDeeplControlPanel
         )
         return deepl.Translator(server_url=self.server_url, auth_key=api_key)
 
     def is_available(self):
-        try:
-            enabled = api.portal.get_registry_record(
-                "collective.translators.interfaces.IDeeplControlPanel.enabled"
-            )
-            return enabled
-        except api.exc.InvalidParameterError:
-            return False
+        return api.portal.get_registry_record(
+            name="enabled", interface=IDeeplControlPanel
+        )
 
     def available_languages(self):
         try:

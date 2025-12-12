@@ -6,16 +6,16 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="Plone Translator: Install"
-      description="Package to configure a new Deepl Translator site"
+      title="Collective Translators: Install"
+      description="Package to configure different translation services to be used with plone.app.multilingual"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/default"
       />
 
   <genericsetup:registerProfile
       name="uninstall"
-      title="Plone Translator: Uninstall"
-      description="Uninstall Deepl Translator setup."
+      title="Collective Translators: Uninstall"
+      description="Uninstall translation services."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/uninstall"
       />

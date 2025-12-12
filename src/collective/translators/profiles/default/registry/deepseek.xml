@@ -3,7 +3,7 @@
           i18n:domain="collective.translators"
 >
   <!-- DeepSeek Control Panel -->
-  <records interface="collective.translators.interfaces.IDeepSeekControlPanel">
+  <records interface="collective.translators.deepseek.controlpanel.IDeepSeekControlPanel">
     <value key="enabled">False</value>
     <value key="order">30</value>
     <value key="source_languages" />

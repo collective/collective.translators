@@ -1,8 +1,9 @@
 import requests
+from plone import api
+from .controlpanel import ILibreTranslateControlPanel
 
 
 class LibreTranslateTranslatorFactory:
-    order = 30
 
     # TODO: manage settings in the registry
 
@@ -11,9 +12,16 @@ class LibreTranslateTranslatorFactory:
     autodetect_source_language = False
     timeout = 5
 
+    @property
+    def order(self):
+        return api.portal.get_registry_record(
+            name="order", interface=ILibreTranslateControlPanel
+        )
+
     def is_available(self):
-        # TODO
-        return True
+        return api.portal.get_registry_record(
+            name="enabled", interface=ILibreTranslateControlPanel
+        )
 
     def available_languages(self):
         # TODO
