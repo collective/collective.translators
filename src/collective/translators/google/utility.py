@@ -1,6 +1,5 @@
-from plone.app.multilingual.interfaces import IMultiLanguageExtraOptionsSchema
-from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
+from plone import api
+from .controlpanel import IGoogleTranslateControlPanel
 
 import json
 import urllib
@@ -9,24 +8,23 @@ import urllib
 class GoogleCloudTranslationAPIFactory:
     """implement the external translation using Google Cloud Translation API"""
 
-    order = 999
-
     def is_available(self):
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(
-            IMultiLanguageExtraOptionsSchema, prefix="plone"
+        return api.portal.get_registry_record(
+            name="enabled", interface=IGoogleTranslateControlPanel
         )
-        key = settings.google_translation_key
-        return key is not None and len(key.strip()) > 0
 
     def available_languages(self):
-        # All languages are supported
         return []
 
+    @property
+    def order(self):
+        return api.portal.get_registry_record(
+            name="order", interface=IGoogleTranslateControlPanel
+        )
+
     def translate_content(self, content, source_language, target_language):
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(
-            IMultiLanguageExtraOptionsSchema, prefix="plone"
+        google_translation_key = api.portal.get_registry_record(
+            name="api_key", interface=IGoogleTranslateControlPanel
         )
 
         question = content
@@ -41,28 +39,28 @@ class GoogleCloudTranslationAPIFactory:
             question = question[index:]
             length = len(question)
             data = {
-                "key": settings.google_translation_key,
+                "key": google_translation_key,
                 "target": target_language,
                 "source": source_language,
                 "q": temp_question,
             }
             params = urllib.parse.urlencode(data)
 
-            retorn = urllib.request.urlopen(url + "?" + params)
-            translated += json.loads(retorn.read())["data"]["translations"][0][
+            result = urllib.request.urlopen(url + "?" + params)
+            translated += json.loads(result.read())["data"]["translations"][0][
                 "translatedText"
             ]
 
         data = {
-            "key": settings.google_translation_key,
+            "key": google_translation_key,
             "target": target_language,
             "source": source_language,
             "q": temp_question,
         }
         params = urllib.parse.urlencode(data)
 
-        retorn = urllib.request.urlopen(url + "?" + params)
-        translated += json.loads(retorn.read())["data"]["translations"][0][
+        result = urllib.request.urlopen(url + "?" + params)
+        translated += json.loads(result.read())["data"]["translations"][0][
             "translatedText"
         ]
         return translated

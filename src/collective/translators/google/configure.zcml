@@ -4,9 +4,9 @@
     >
 
   <utility
-      provides=".interfaces.IExternalTranslationService"
+      provides="plone.app.multilingual.interfaces.IExternalTranslationService"
       name="google_translate"
-      component=".google_translate.GoogleCloudTranslationAPI"
+      component=".utility.GoogleCloudTranslationAPI"
       />
 
 
