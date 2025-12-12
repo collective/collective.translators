@@ -44,10 +44,10 @@ release = [
   "zestreleaser.towncrier",
   "zest.pocompile",
 ]
-ollama = ["ollama"]
-deepl = ["deepl"]
 aws = ["boto3"]
 deepseek = ["openai"]
+deepl = ["deepl"]
+ollama = ["ollama"]
 
 
 [project.urls]
