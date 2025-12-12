@@ -4,7 +4,7 @@ dynamic = ["version"]
 description = "Pluggable external translation utilities for Plone"
 readme = "README.md"
 license = "GPL-2.0-only"
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.11, <3.14"
 authors = [
   { name = "Mauro Amico", email = "mauro.amico@gmail.com" },
   { name = "Mikel Larreategi", email = "mlarreategi@codesyntax.com" },
