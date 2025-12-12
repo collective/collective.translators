@@ -9,7 +9,7 @@ commit-id = "2.3.0"
 codespell_skip = "*.min.js"
 codespell_ignores = "vew"
 dependencies_mappings = []
-dependencies_ignores = "['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'pytest-cov']"
+dependencies_ignores = "['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'pytest-cov', 'boto3', 'deepl', 'ollama', 'openai']"
 
 [gitignore]
 extra_lines = """
