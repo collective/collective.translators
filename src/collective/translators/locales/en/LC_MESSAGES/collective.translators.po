@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-05-25 17:12+0000\n"
+"POT-Creation-Date: 2025-12-12 16:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,3 +13,175 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.translators\n"
+
+#: ../deepl/controlpanel.py:13
+#: ../deepseek/controlpanel.py:12
+#: ../google/controlpanel.py:12
+msgid "API Key"
+msgstr ""
+
+#: ../aws/controlpanel.py:31
+msgid "AWS Translate Service"
+msgstr ""
+
+#: ../aws/controlpanel.py:43
+#: ../profiles/default/controlpanel.xml
+msgid "AWS Translate Settings"
+msgstr ""
+
+#: ../aws/controlpanel.py:12
+msgid "Access key"
+msgstr ""
+
+#: ../deepl/controlpanel.py:26
+#: ../libretranslate/controlpanel.py:25
+msgid "Auto detect the source language?"
+msgstr ""
+
+#: ../profiles.zcml:13
+msgid "Collective Translators: Install"
+msgstr ""
+
+#: ../profiles.zcml:21
+msgid "Collective Translators: Uninstall"
+msgstr ""
+
+#: ../deepseek/controlpanel.py:32
+#: ../profiles/default/controlpanel.xml
+msgid "DeepSeek Settings"
+msgstr ""
+
+#: ../deepseek/controlpanel.py:20
+msgid "DeepSeek Translation Service"
+msgstr ""
+
+#: ../deepl/controlpanel.py:47
+#: ../profiles/default/controlpanel.xml
+msgid "Deepl Settings"
+msgstr ""
+
+#: ../deepl/controlpanel.py:35
+msgid "Deepl Translation Service"
+msgstr ""
+
+#: ../interfaces.py:15
+msgid "Enabled"
+msgstr ""
+
+#: ../google/controlpanel.py:32
+#: ../profiles/default/controlpanel.xml
+msgid "Google Translate Settings"
+msgstr ""
+
+#: ../google/controlpanel.py:20
+msgid "Google Translate Translation Service"
+msgstr ""
+
+#: ../deepl/controlpanel.py:20
+msgid "If disabled it will use the free API."
+msgstr ""
+
+#: ../deepl/controlpanel.py:27
+#: ../libretranslate/controlpanel.py:26
+msgid "If enabled the source language will be autodetected."
+msgstr ""
+
+#: ../interfaces.py:16
+msgid "If enabled this service will be enabled used to get the translations."
+msgstr ""
+
+#: ../libretranslate/controlpanel.py:34
+msgid "Libre Translate Service"
+msgstr ""
+
+#: ../libretranslate/controlpanel.py:46
+msgid "Libre Translate Settings"
+msgstr ""
+
+#: ../profiles/default/controlpanel.xml
+msgid "LibreTranslate Settings"
+msgstr ""
+
+#: ../ollama/controlpanel.py:34
+msgid "Ollama Settings"
+msgstr ""
+
+#: ../ollama/controlpanel.py:22
+msgid "Ollama Translation Service"
+msgstr ""
+
+#: ../interfaces.py:23
+msgid "Order"
+msgstr ""
+
+#: ../interfaces.py:24
+msgid "Ordering of this service. The lower the sooner this service will be used."
+msgstr ""
+
+#: ../profiles.zcml:13
+msgid "Package to configure different translation services to be used with plone.app.multilingual"
+msgstr ""
+
+#: ../aws/controlpanel.py:22
+msgid "Region"
+msgstr ""
+
+#: ../aws/controlpanel.py:17
+msgid "Secret key"
+msgstr ""
+
+#: ../interfaces.py:32
+msgid "Select which source languages does this service allow"
+msgstr ""
+
+#: ../interfaces.py:42
+msgid "Select which target languages does this service allow"
+msgstr ""
+
+#: ../interfaces.py:31
+msgid "Source languages"
+msgstr ""
+
+#: ../interfaces.py:41
+msgid "Target languages"
+msgstr ""
+
+#: ../deepseek/controlpanel.py:13
+msgid "The API key for the DeepSeek service."
+msgstr ""
+
+#: ../deepl/controlpanel.py:14
+msgid "The API key for the Deepl translation service."
+msgstr ""
+
+#: ../google/controlpanel.py:13
+msgid "The API key for the Google Translate service."
+msgstr ""
+
+#: ../libretranslate/controlpanel.py:14
+msgid "The API key for the Libre translate translation service."
+msgstr ""
+
+#: ../aws/controlpanel.py:13
+msgid "The key for the access to AWS Translate service."
+msgstr ""
+
+#: ../aws/controlpanel.py:23
+msgid "The region for the AWS Translate service."
+msgstr ""
+
+#: ../aws/controlpanel.py:18
+msgid "The secret key for the access to AWS Translate service."
+msgstr ""
+
+#: ../libretranslate/controlpanel.py:19
+msgid "URL of the Libre Translate instance"
+msgstr ""
+
+#: ../profiles.zcml:21
+msgid "Uninstall translation services."
+msgstr ""
+
+#: ../deepl/controlpanel.py:19
+msgid "Use the Pro API?"
+msgstr ""
