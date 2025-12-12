@@ -3,6 +3,7 @@ from plone import api
 
 import deepl
 
+
 PRO_API_URL = "https://api.deepl.com"
 FREE_API_URL = "https://api-free.deepl.com"
 
