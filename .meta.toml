@@ -21,7 +21,7 @@ extra_lines = """
 # test_path = "/tests"
 # use_mxdev = true
 # test_deps_additional = ""
-test_matrix = { "6.2" = ["3.13", "3.11"] }
+test_matrix = { "6.2" = ["*"] }
 
 [github]
 py_versions = "[\"3.12\", \"3.11\", \"3.10\"]"
