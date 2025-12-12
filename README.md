@@ -30,7 +30,7 @@ Integrates with the Ollama local LLM server. Allows translation using models run
 
 ### 6. Google Translate (`GoogleTranslateCloudAPIFactory`)
 
-Integrates wiht the Google Translate Cloud API.
+Integrates with the Google Translate Cloud API.
 
 ---
 
@@ -43,7 +43,7 @@ If you require AWS, Deepl, DeepSeek or Ollama support, install the product requi
 - `collective.translators[deepl]`
 - `collective.translators[deepl,aws]`
 
-Google Translate and Libre Translate support is embbeded because they just require HTTP requests to work.
+Google Translate and Libre Translate support is embedded because they just require HTTP requests to work.
 
 ## Adding a New Tool
 
