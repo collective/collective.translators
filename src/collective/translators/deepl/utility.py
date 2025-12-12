@@ -3,14 +3,24 @@ from plone import api
 
 import deepl
 
+PRO_API_URL = "https://api.deepl.com"
+FREE_API_URL = "https://api-free.deepl.com"
+
 
 class DeeplTranslatorFactory:
-    # TODO: manage settings in the registry
-    # Free API -> https://api-free.deepl.com
-    # Pro API -> https://api.deepl.com
 
-    server_url = "https://api-free.deepl.com"
-    autodetect_source_language = False
+    @property
+    def server_url(self):
+        if api.portal.get_registry_record(name="use_pro", interface=IDeeplControlPanel):
+            return PRO_API_URL
+
+        return FREE_API_URL
+
+    @property
+    def autodetect_source_language(self):
+        return api.portal.get_registry_record(
+            name="autodetect_source_language", interface=IDeeplControlPanel
+        )
 
     @property
     def order(self):
