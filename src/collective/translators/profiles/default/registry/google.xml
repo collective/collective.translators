@@ -3,11 +3,11 @@
           i18n:domain="collective.translators"
 >
   <!-- DeepSeek Control Panel -->
-  <records interface="collective.translators.deepseek.controlpanel.IDeepSeekControlPanel">
+  <records interface="collective.translators.google.controlpanel.IGoogleTranslateControlPanel">
     <value key="enabled">False</value>
     <value key="order">30</value>
     <value key="source_languages" />
     <value key="target_languages" />
-    <value key="api_key">YOUR_DEEPSEEK_API_KEY</value>
+    <value key="api_key">YOUR_GOOGLETRANSLATE_API_KEY</value>
   </records>
 </registry>

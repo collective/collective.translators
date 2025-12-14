@@ -1,17 +1,15 @@
 # Generated from:
-# https://github.com/plone/meta/tree/main/config/default
+# https://github.com/plone/meta/tree/main/src/plone/meta/default
 # See the inline comments on how to expand/tweak this configuration file
 [meta]
 template = "default"
-commit-id = "71d0218b"
+commit-id = "2.3.0"
 
 [pyproject]
 codespell_skip = "*.min.js"
 codespell_ignores = "vew"
-dependencies_mappings = [
-  "pytest-plone = ['pytest', 'plone.testing', 'plone.app.testing']",
-]
-dependencies_ignores = "['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'pytest-cov']"
+dependencies_mappings = []
+dependencies_ignores = "['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'pytest-cov', 'boto3', 'deepl', 'ollama', 'openai']"
 
 [gitignore]
 extra_lines = """
@@ -19,14 +17,12 @@ extra_lines = """
 """
 
 [tox]
-test_runner = "pytest"
-test_path = "/tests"
-use_mxdev = true
-test_deps_additional = ""
+# test_runner = "pytest"
+# test_path = "/tests"
+# use_mxdev = true
+# test_deps_additional = ""
+test_matrix = { "6.2" = ["*"] }
 
 [github]
 py_versions = "[\"3.12\", \"3.11\", \"3.10\"]"
-jobs = [
-    "qa",
-    "release_ready",
-    ]
+jobs = ["qa", "release_ready"]

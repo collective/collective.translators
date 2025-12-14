@@ -15,6 +15,20 @@ class IDeeplControlPanel(IControlPanel):
         required=False,
     )
 
+    use_pro = zope.schema.Bool(
+        title=_("Use the Pro API?"),
+        description=_("If disabled it will use the free API."),
+        default=False,
+        required=False,
+    )
+
+    autodetect_source_language = zope.schema.Bool(
+        title=_("Auto detect the source language?"),
+        description=_("If enabled the source language will be autodetected."),
+        default=False,
+        required=False,
+    )
+
 
 class DeeplControlPanel(controlpanel.RegistryEditForm):
     id = "DeeplControlPanel"

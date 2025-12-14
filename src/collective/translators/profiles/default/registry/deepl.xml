@@ -3,7 +3,7 @@
           i18n:domain="collective.translators"
 >
   <!-- Deepl Control Panel -->
-  <records interface="collective.translators.interfaces.IDeeplControlPanel">
+  <records interface="collective.translators.deepl.controlpanel.IDeeplControlPanel">
     <value key="enabled">False</value>
     <value key="order">30</value>
     <value key="source_languages" />

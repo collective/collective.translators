@@ -5,9 +5,12 @@ import ollama
 
 
 class OllamaFactory:
-    order = 30
     model = "zongwei/gemma3-translator:1b"
     prompt = "Translate the following text from {source_language} to {target_language}: {content}"
+
+    @property
+    def order(self):
+        return api.portal.get_registry_record(name="order", interface=IControlPanel)
 
     def is_available(self):
         value = api.portal.get_registry_record(name="enabled", interface=IControlPanel)

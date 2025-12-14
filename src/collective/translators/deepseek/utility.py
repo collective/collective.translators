@@ -1,22 +1,28 @@
+from .controlpanel import IDeepSeekControlPanel
 from openai import OpenAI
 from plone import api
 
 
 class DeepSeekFactory:
-    order = 30
     server_url = "https://api.deepseek.com"
+
+    @property
+    def order(self):
+        return api.portal.get_registry_record(
+            name="order", interface=IDeepSeekControlPanel
+        )
 
     @property
     def translator(self):
         key = api.portal.get_registry_record(
-            "collective.translators.interfaces.IDeepSeekControlPanel.api_key"
+            name="api_key", interface=IDeepSeekControlPanel
         )
         client = OpenAI(api_key=key, base_url=self.server_url)
         return client
 
     def is_available(self):
         value = api.portal.get_registry_record(
-            "collective.translators.interfaces.IDeepSeekControlPanel.enabled"
+            name="enabled", interface=IDeepSeekControlPanel
         )
         return value
 

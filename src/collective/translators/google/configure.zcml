@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    >
+
+  <utility
+      provides="plone.app.multilingual.interfaces.IExternalTranslationService"
+      name="google_translate"
+      component=".utility.GoogleCloudTranslationAPI"
+      />
+
+
+  <browser:page
+      name="google-translate-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.GoogleTranslateControlPanel"
+      permission="plone.app.controlpanel.Language"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".controlpanel.GoogleTranslateRegistryConfigletPanel"
+      name="google-translate-controlpanel"
+      />
+
+</configure>

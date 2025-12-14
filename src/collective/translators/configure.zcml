@@ -17,10 +17,6 @@
   <include file="profiles.zcml" />
   <include file="permissions.zcml" />
 
-  <include package=".indexers" />
-  <include package=".serializers" />
-  <include package=".vocabularies" />
-
   <!-- -*- extra stuff goes here -*- -->
 
   <include
@@ -37,5 +33,6 @@
       zcml:condition="installed openai"
       />
   <include package=".ollama" />
+  <include package=".google" />
 
 </configure>

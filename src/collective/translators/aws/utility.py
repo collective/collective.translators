@@ -1,21 +1,30 @@
+from .controlpanel import IAWSTranslateControlPanel
 from plone import api
 
 import boto3
 
 
 class AWSTranslatorFactory:
-    order = 30
+    @property
+    def order(self):
+        return api.portal.get_registry_record(
+            name="order",
+            interface=IAWSTranslateControlPanel,
+        )
 
     @property
     def translator(self):
         access_key = api.portal.get_registry_record(
-            "collective.translators.interfaces.IAWSTranslateControlPanel.access_key"
+            name="access_key",
+            interface=IAWSTranslateControlPanel,
         )
         secret_key = api.portal.get_registry_record(
-            "collective.translators.interfaces.IAWSTranslateControlPanel.secret_key"
+            name="secret_key",
+            interface=IAWSTranslateControlPanel,
         )
         region_name = api.portal.get_registry_record(
-            "collective.translators.interfaces.IAWSTranslateControlPanel.region_name"
+            name="region_name",
+            interface=IAWSTranslateControlPanel,
         )
         return boto3.client(
             "translate",
@@ -25,13 +34,9 @@ class AWSTranslatorFactory:
         )
 
     def is_available(self):
-        try:
-            enabled = api.portal.get_registry_record(
-                "collective.translators.interfaces.IAWSTranslateControlPanel.enabled"
-            )
-            return enabled
-        except api.exc.InvalidParameterError:
-            return False
+        return api.portal.get_registry_record(
+            name="enabled", interface=IAWSTranslateControlPanel
+        )
 
     def available_languages(self):
         try:

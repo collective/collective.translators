@@ -15,6 +15,19 @@ class ILibreTranslateControlPanel(IControlPanel):
         required=False,
     )
 
+    server_url = zope.schema.TextLine(
+        title=_("URL of the Libre Translate instance"),
+        default="http://localhost:5000",
+        required=True,
+    )
+
+    autodetect_source_language = zope.schema.Bool(
+        title=_("Auto detect the source language?"),
+        description=_("If enabled the source language will be autodetected."),
+        default=False,
+        required=False,
+    )
+
 
 class LibreTranslateControlPanel(controlpanel.RegistryEditForm):
     id = "LibreTranslateControlPanel"

@@ -1,68 +1,190 @@
-msgid "Enabled"
-msgstr "Abilitato"
+#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+#SOME DESCRIPTIVE TITLE.
+#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-12 16:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
 
-msgid "Deepl Translation Service"
-msgstr "Servizio di traduzione Deepl"
-
-msgid "DeepSeek Translation Service"
-msgstr "Servizio di traduzione DeepSeek"
-
-msgid "AWS Translate Service"
-msgstr "Servizio di traduzione AWS"
-
-msgid "Libre Translate Service"
-msgstr "Servizio di traduzione Libre"
-
-msgid "Deepl Settings"
-msgstr "Impostazioni Deepl"
-
-msgid "DeepSeek Settings"
-msgstr "Impostazioni DeepSeek"
-
-msgid "AWS Translate Settings"
-msgstr "Impostazioni AWS Translate"
-
-msgid "Libre Translate Settings"
-msgstr "Impostazioni Libre Translate"
-
-msgid "Translation service enabled"
-msgstr "Servizio di traduzione abilitato"
-
-msgid "Order"
-msgstr "Ordine"
-
-msgid "Ordering service translation"
-msgstr "Ordinamento del servizio di traduzione"
-
-msgid "Source languages"
-msgstr "Lingue di origine"
-
-msgid "Target languages"
-msgstr "Lingue di destinazione"
-
+#: ../deepl/controlpanel.py:13
+#: ../deepseek/controlpanel.py:12
+#: ../google/controlpanel.py:12
 msgid "API Key"
 msgstr "Chiave API"
 
-msgid "The API key for the Deepl translation service."
-msgstr "La chiave API per il servizio di traduzione Deepl."
+#: ../aws/controlpanel.py:31
+msgid "AWS Translate Service"
+msgstr "Servizio di traduzione AWS"
 
+#: ../aws/controlpanel.py:43
+#: ../profiles/default/controlpanel.xml
+msgid "AWS Translate Settings"
+msgstr "Impostazioni AWS Translate"
+
+#: ../aws/controlpanel.py:12
 msgid "Access key"
 msgstr "Chiave di accesso"
 
-msgid "The key for the access to AWS Translate service."
-msgstr "La chiave per l'accesso al servizio AWS Translate."
+#: ../deepl/controlpanel.py:26
+#: ../libretranslate/controlpanel.py:25
+msgid "Auto detect the source language?"
+msgstr ""
 
-msgid "Secret key"
-msgstr "Chiave segreta"
+#: ../profiles.zcml:13
+msgid "Collective Translators: Install"
+msgstr ""
 
-msgid "The secret key for the access to AWS Translate service."
-msgstr "La chiave segreta per l'accesso al servizio AWS Translate."
+#: ../profiles.zcml:21
+msgid "Collective Translators: Uninstall"
+msgstr ""
 
+#: ../deepseek/controlpanel.py:32
+#: ../profiles/default/controlpanel.xml
+msgid "DeepSeek Settings"
+msgstr "Impostazioni DeepSeek"
+
+#: ../deepseek/controlpanel.py:20
+msgid "DeepSeek Translation Service"
+msgstr "Servizio di traduzione DeepSeek"
+
+#: ../deepl/controlpanel.py:47
+#: ../profiles/default/controlpanel.xml
+msgid "Deepl Settings"
+msgstr "Impostazioni Deepl"
+
+#: ../deepl/controlpanel.py:35
+msgid "Deepl Translation Service"
+msgstr "Servizio di traduzione Deepl"
+
+#: ../interfaces.py:15
+msgid "Enabled"
+msgstr "Abilitato"
+
+#: ../google/controlpanel.py:32
+#: ../profiles/default/controlpanel.xml
+msgid "Google Translate Settings"
+msgstr ""
+
+#: ../google/controlpanel.py:20
+msgid "Google Translate Translation Service"
+msgstr ""
+
+#: ../deepl/controlpanel.py:20
+msgid "If disabled it will use the free API."
+msgstr ""
+
+#: ../deepl/controlpanel.py:27
+#: ../libretranslate/controlpanel.py:26
+msgid "If enabled the source language will be autodetected."
+msgstr ""
+
+#: ../interfaces.py:16
+msgid "If enabled this service will be enabled used to get the translations."
+msgstr ""
+
+#: ../libretranslate/controlpanel.py:34
+msgid "Libre Translate Service"
+msgstr "Servizio di traduzione Libre"
+
+#: ../libretranslate/controlpanel.py:46
+msgid "Libre Translate Settings"
+msgstr "Impostazioni Libre Translate"
+
+#: ../profiles/default/controlpanel.xml
+msgid "LibreTranslate Settings"
+msgstr ""
+
+#: ../ollama/controlpanel.py:34
+msgid "Ollama Settings"
+msgstr ""
+
+#: ../ollama/controlpanel.py:22
+msgid "Ollama Translation Service"
+msgstr ""
+
+#: ../interfaces.py:23
+msgid "Order"
+msgstr "Ordine"
+
+#: ../interfaces.py:24
+msgid "Ordering of this service. The lower the sooner this service will be used."
+msgstr ""
+
+#: ../profiles.zcml:13
+msgid "Package to configure different translation services to be used with plone.app.multilingual"
+msgstr ""
+
+#: ../aws/controlpanel.py:22
 msgid "Region"
 msgstr "Regione"
 
+#: ../aws/controlpanel.py:17
+msgid "Secret key"
+msgstr "Chiave segreta"
+
+#: ../interfaces.py:32
+msgid "Select which source languages does this service allow"
+msgstr ""
+
+#: ../interfaces.py:42
+msgid "Select which target languages does this service allow"
+msgstr ""
+
+#: ../interfaces.py:31
+msgid "Source languages"
+msgstr "Lingue di origine"
+
+#: ../interfaces.py:41
+msgid "Target languages"
+msgstr "Lingue di destinazione"
+
+#: ../deepseek/controlpanel.py:13
+msgid "The API key for the DeepSeek service."
+msgstr ""
+
+#: ../deepl/controlpanel.py:14
+msgid "The API key for the Deepl translation service."
+msgstr "La chiave API per il servizio di traduzione Deepl."
+
+#: ../google/controlpanel.py:13
+msgid "The API key for the Google Translate service."
+msgstr ""
+
+#: ../libretranslate/controlpanel.py:14
+msgid "The API key for the Libre translate translation service."
+msgstr "La chiave API per il servizio di traduzione Libre."
+
+#: ../aws/controlpanel.py:13
+msgid "The key for the access to AWS Translate service."
+msgstr "La chiave per l'accesso al servizio AWS Translate."
+
+#: ../aws/controlpanel.py:23
 msgid "The region for the AWS Translate service."
 msgstr "La regione per il servizio AWS Translate."
 
-msgid "The API key for the Libre translate translation service."
-msgstr "La chiave API per il servizio di traduzione Libre."
+#: ../aws/controlpanel.py:18
+msgid "The secret key for the access to AWS Translate service."
+msgstr "La chiave segreta per l'accesso al servizio AWS Translate."
+
+#: ../libretranslate/controlpanel.py:19
+msgid "URL of the Libre Translate instance"
+msgstr ""
+
+#: ../profiles.zcml:21
+msgid "Uninstall translation services."
+msgstr ""
+
+#: ../deepl/controlpanel.py:19
+msgid "Use the Pro API?"
+msgstr ""

@@ -1,33 +1,45 @@
+from .controlpanel import IDeeplControlPanel
 from plone import api
 
 import deepl
 
 
+PRO_API_URL = "https://api.deepl.com"
+FREE_API_URL = "https://api-free.deepl.com"
+
+
 class DeeplTranslatorFactory:
-    order = 30
 
-    # TODO: manage settings in the registry
-    # Free API -> https://api-free.deepl.com
-    # Pro API -> https://api.deepl.com
+    @property
+    def server_url(self):
+        if api.portal.get_registry_record(name="use_pro", interface=IDeeplControlPanel):
+            return PRO_API_URL
 
-    server_url = "https://api-free.deepl.com"
-    autodetect_source_language = False
+        return FREE_API_URL
+
+    @property
+    def autodetect_source_language(self):
+        return api.portal.get_registry_record(
+            name="autodetect_source_language", interface=IDeeplControlPanel
+        )
+
+    @property
+    def order(self):
+        return api.portal.get_registry_record(
+            name="order", interface=IDeeplControlPanel
+        )
 
     @property
     def translator(self):
         api_key = api.portal.get_registry_record(
-            "collective.translators.interfaces.IDeeplControlPanel.api_key"
+            name="api_key", interface=IDeeplControlPanel
         )
         return deepl.Translator(server_url=self.server_url, auth_key=api_key)
 
     def is_available(self):
-        try:
-            enabled = api.portal.get_registry_record(
-                "collective.translators.interfaces.IDeeplControlPanel.enabled"
-            )
-            return enabled
-        except api.exc.InvalidParameterError:
-            return False
+        return api.portal.get_registry_record(
+            name="enabled", interface=IDeeplControlPanel
+        )
 
     def available_languages(self):
         try:
@@ -93,7 +105,7 @@ class DeeplTranslatorFactory:
                     return res.text
                 except deepl.DeepLException:
                     return ""
-            return "Language not supported"
+            return ""
 
 
 DeeplTranslator = DeeplTranslatorFactory()
