@@ -32,7 +32,10 @@
       package=".deepseek"
       zcml:condition="installed openai"
       />
-  <include package=".ollama" zcml:condition="installed ollama"/>
+  <include
+      package=".ollama"
+      zcml:condition="installed ollama"
+      />
   <include package=".google" />
 
 </configure>
