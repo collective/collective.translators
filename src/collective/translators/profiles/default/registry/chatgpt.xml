@@ -9,7 +9,7 @@
     <value key="source_languages" />
     <value key="target_languages" />
     <value key="api_key">YOUR_OPENAI_API_KEY</value>
-    <value key="base_url"></value>
+    <value key="base_url" />
     <value key="model">gpt-3.5-turbo</value>
     <value key="temperature">0.3</value>
     <value key="max_tokens">1000</value>
