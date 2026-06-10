@@ -59,4 +59,15 @@
     <permission>Manage portal</permission>
   </configlet>
 
+  <configlet action_id="chatgpt-translator-controlpanel"
+             appId="chatgpt-translator-controlpanel"
+             category="Products"
+             title="ChatGPT Settings"
+             url_expr="string:${portal_url}/@@chatgpt-translator-controlpanel"
+             visible="True"
+             i18n:attributes="title"
+  >
+    <permission>Manage portal</permission>
+  </configlet>
+
 </object>

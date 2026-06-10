@@ -33,6 +33,10 @@
       zcml:condition="installed openai"
       />
   <include
+      package=".chatgpt"
+      zcml:condition="installed openai"
+      />
+  <include
       package=".ollama"
       zcml:condition="installed ollama"
       />

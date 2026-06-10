@@ -17,6 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
+#: ../chatgpt/controlpanel.py:11
 #: ../deepl/controlpanel.py:13
 #: ../deepseek/controlpanel.py:12
 #: ../google/controlpanel.py:12
@@ -41,6 +42,10 @@ msgstr "Chiave di accesso"
 msgid "Auto detect the source language?"
 msgstr ""
 
+#: ../chatgpt/controlpanel.py:26
+msgid "API Base URL"
+msgstr "URL Base API"
+
 #: ../profiles.zcml:13
 msgid "Collective Translators: Install"
 msgstr ""
@@ -48,6 +53,19 @@ msgstr ""
 #: ../profiles.zcml:21
 msgid "Collective Translators: Uninstall"
 msgstr ""
+
+#: ../chatgpt/controlpanel.py:48
+msgid "ChatGPT Settings"
+msgstr "Impostazioni ChatGPT"
+
+#: ../chatgpt/controlpanel.py:36
+msgid "ChatGPT Translation Service"
+msgstr "Servizio di traduzione ChatGPT"
+
+#: ../deepseek/controlpanel.py:48
+#: ../profiles/default/controlpanel.xml
+msgid "ChatGPT Settings"
+msgstr "Impostazioni ChatGPT"
 
 #: ../deepseek/controlpanel.py:32
 #: ../profiles/default/controlpanel.xml
@@ -137,6 +155,18 @@ msgstr "Chiave segreta"
 msgid "Select which source languages does this service allow"
 msgstr ""
 
+#: ../chatgpt/controlpanel.py:11
+msgid "The API key for the ChatGPT service."
+msgstr "La chiave API per il servizio ChatGPT."
+
+#: ../chatgpt/controlpanel.py:26
+msgid "The base URL for the ChatGPT API (e.g., https://api.openai.com/v1). Leave empty to use default."
+msgstr "L'URL di base per l'API ChatGPT (ad es. https://api.openai.com/v1). Lascia vuoto per usare il valore predefinito."
+
+#: ../chatgpt/controlpanel.py:32
+msgid "The ChatGPT model to use (e.g., gpt-4o, gpt-4-turbo, gpt-3.5-turbo)."
+msgstr "Il modello ChatGPT da utilizzare (ad es. gpt-4o, gpt-4-turbo, gpt-3.5-turbo)."
+
 #: ../interfaces.py:42
 msgid "Select which target languages does this service allow"
 msgstr ""
@@ -176,6 +206,26 @@ msgstr "La regione per il servizio AWS Translate."
 #: ../aws/controlpanel.py:18
 msgid "The secret key for the access to AWS Translate service."
 msgstr "La chiave segreta per l'accesso al servizio AWS Translate."
+
+#: ../chatgpt/controlpanel.py:38
+msgid "Model"
+msgstr "Modello"
+
+#: ../chatgpt/controlpanel.py:44
+msgid "Temperature"
+msgstr "Temperatura"
+
+#: ../chatgpt/controlpanel.py:44
+msgid "Controls randomness: 0 for deterministic, higher values for more random. Value between 0 and 2."
+msgstr "Controlla la casualità: 0 per deterministico, valori più alti per più casualità. Valore tra 0 e 2."
+
+#: ../chatgpt/controlpanel.py:52
+msgid "Max Tokens"
+msgstr "Token Massimi"
+
+#: ../chatgpt/controlpanel.py:52
+msgid "Maximum number of tokens to generate in the translation response."
+msgstr "Numero massimo di token da generare nella risposta di traduzione."a chiave segreta per l'accesso al servizio AWS Translate."
 
 #: ../libretranslate/controlpanel.py:19
 msgid "URL of the Libre Translate instance"
