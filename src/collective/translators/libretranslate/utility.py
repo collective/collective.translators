@@ -62,9 +62,9 @@ class LibreTranslateTranslatorFactory:
                 "api_key": self.api_key,
             },
             timeout=self.timeout,
-        ).json()
-        if res.ok:
-            return res["translatedText"]
+        )
+        if res.status_code == 200:
+            return res.json().get("translatedText", "")
 
         return ""
 

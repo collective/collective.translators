@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="collective.translators"
+>
+  <!-- ChatGPT Control Panel -->
+  <records interface="collective.translators.chatgpt.controlpanel.IChatGPTControlPanel">
+    <value key="enabled">False</value>
+    <value key="order">30</value>
+    <value key="source_languages" />
+    <value key="target_languages" />
+    <value key="api_key">YOUR_OPENAI_API_KEY</value>
+    <value key="base_url"></value>
+    <value key="model">gpt-3.5-turbo</value>
+    <value key="temperature">0.3</value>
+    <value key="max_tokens">1000</value>
+  </records>
+</registry>

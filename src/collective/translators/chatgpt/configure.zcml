@@ -1,0 +1,27 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.translators"
+    >
+
+  <utility
+      provides="plone.app.multilingual.interfaces.IExternalTranslationService"
+      name="chatgpt_translate"
+      component=".utility.ChatGPT"
+      />
+
+  <browser:page
+      name="chatgpt-translator-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.ChatGPTControlPanel"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".controlpanel.ChatGPTRegistryConfigletPanel"
+      name="chatgpt-controlpanel"
+      />
+
+</configure>

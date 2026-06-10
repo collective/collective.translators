@@ -17,6 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.translators\n"
 
+#: ../chatgpt/controlpanel.py:11
 #: ../deepl/controlpanel.py:13
 #: ../deepseek/controlpanel.py:12
 #: ../google/controlpanel.py:12
@@ -41,12 +42,29 @@ msgstr ""
 msgid "Auto detect the source language?"
 msgstr ""
 
+#: ../chatgpt/controlpanel.py:26
+msgid "API Base URL"
+msgstr ""
+
 #: ../profiles.zcml:13
 msgid "Collective Translators: Install"
 msgstr ""
 
 #: ../profiles.zcml:21
 msgid "Collective Translators: Uninstall"
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:48
+msgid "ChatGPT Settings"
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:36
+msgid "ChatGPT Translation Service"
+msgstr ""
+
+#: ../deepseek/controlpanel.py:48
+#: ../profiles/default/controlpanel.xml
+msgid "ChatGPT Settings"
 msgstr ""
 
 #: ../deepseek/controlpanel.py:32
@@ -149,6 +167,18 @@ msgstr ""
 msgid "Target languages"
 msgstr ""
 
+#: ../chatgpt/controlpanel.py:11
+msgid "The API key for the ChatGPT service."
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:26
+msgid "The base URL for the ChatGPT API (e.g., https://api.openai.com/v1). Leave empty to use default."
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:32
+msgid "The ChatGPT model to use (e.g., gpt-4o, gpt-4-turbo, gpt-3.5-turbo)."
+msgstr ""
+
 #: ../deepseek/controlpanel.py:13
 msgid "The API key for the DeepSeek service."
 msgstr ""
@@ -175,6 +205,26 @@ msgstr ""
 
 #: ../aws/controlpanel.py:18
 msgid "The secret key for the access to AWS Translate service."
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:38
+msgid "Model"
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:44
+msgid "Temperature"
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:44
+msgid "Controls randomness: 0 for deterministic, higher values for more random. Value between 0 and 2."
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:52
+msgid "Max Tokens"
+msgstr ""
+
+#: ../chatgpt/controlpanel.py:52
+msgid "Maximum number of tokens to generate in the translation response."
 msgstr ""
 
 #: ../libretranslate/controlpanel.py:19
