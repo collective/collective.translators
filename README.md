@@ -32,6 +32,10 @@ Integrates with the Ollama local LLM server. Allows translation using models run
 
 Integrates with the Google Translate Cloud API.
 
+### 7. ChatGPT (`ChatGPTFactory`)
+
+Integrates with the OpenAI API. Reads credentials from the Plone registry.
+
 ---
 
 ## Installation and usage
