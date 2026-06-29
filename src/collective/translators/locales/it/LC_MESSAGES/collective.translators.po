@@ -225,7 +225,7 @@ msgstr "Token Massimi"
 
 #: ../chatgpt/controlpanel.py:52
 msgid "Maximum number of tokens to generate in the translation response."
-msgstr "Numero massimo di token da generare nella risposta di traduzione."a chiave segreta per l'accesso al servizio AWS Translate."
+msgstr "Numero massimo di token da generare nella risposta di traduzione."
 
 #: ../libretranslate/controlpanel.py:19
 msgid "URL of the Libre Translate instance"
