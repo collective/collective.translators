@@ -2,6 +2,7 @@
 
 from setuptools import setup
 
+
 setup(
     # metadata in setup.cfg
     include_package_data=True,
