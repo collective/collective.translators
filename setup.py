@@ -2,7 +2,6 @@
 
 from setuptools import setup
 
-
 setup(
     # metadata in setup.cfg
     include_package_data=True,
@@ -26,6 +25,7 @@ setup(
             "plone.testing",
         ],
         "aws": ["boto3"],
+        "chatgpt": ["openai"],
         "deepseek": ["openai"],
         "deepl": ["deepl"],
         "ollama": ["ollama"],
