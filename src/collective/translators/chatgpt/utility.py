@@ -75,7 +75,7 @@ class ChatGPTFactory:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are a professional translator. Translate the user's text accurately and only return the translated content without additional explanations.",
+                        "content": "You are a professional translator. Translate the user's text accurately and only return the translated content without additional explanations. The content might contain HTML: please keep it in the translation.",
                     },
                     {
                         "role": "user",
