@@ -2,6 +2,8 @@
 
 This package extends [plone.app.multilingual](https://github.com/plone/plone.app.multilingual) by providing pluggable external translation utilities for automatic content translation in Plone. It enables seamless integration with multiple translation providers, allowing site administrators to configure and use services such as DeepL, AWS Translate, LibreTranslate, DeepSeek, and Ollama for translating site content.
 
+PR #468 (https://github.com/plone/plone.app.multilingual/pull/468) is a strict requirement for this addon.
+
 ## Translator Utilities
 
 This package provides pluggable translation utilities for multiple providers. Each utility exposes a similar interface for translating content and checking available languages.
