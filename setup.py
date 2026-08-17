@@ -25,6 +25,11 @@ setup(
             "plone.restapi[test]",
             "plone.testing",
         ],
+        "release": [
+            "zest.releaser[recommended]",
+            "zestreleaser.towncrier",
+            "zest.pocompile",
+        ],
         "aws": ["boto3"],
         "chatgpt": ["openai"],
         "deepseek": ["openai"],

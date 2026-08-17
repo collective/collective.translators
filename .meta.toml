@@ -14,6 +14,8 @@ dependencies_ignores = "['plone.app.iterate', 'plone.app.upgrade', 'plone.volto'
 [gitignore]
 extra_lines = """
 .lock
+.mxdev_cache/
+.venv/
 """
 
 [tox]

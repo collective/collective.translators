@@ -119,3 +119,9 @@ test-coverage: $(BIN_FOLDER)/tox ## run tests with coverage
 ## Add bobtemplates features (check bobtemplates.plone's documentation to get the list of available features)
 add: $(BIN_FOLDER)/pipx
 	$(BIN_FOLDER)/pipx run plonecli add -b .mrbob.ini $(filter-out $@,$(MAKECMDGOALS))
+
+.PHONY: release
+release: $(VENV_FOLDER) ## Create a release
+	@echo "$(GREEN)==> Create a release$(RESET)"
+	@uv pip install -e ".[release]"
+	@$(BIN_FOLDER)/fullrelease
