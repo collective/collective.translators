@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a1 (2026-08-24)
+
+
+### Bug fixes:
+
+- Fixed the issue related to not yet installed package. [mamico] 
+
 ## 1.0.0a0 (2026-08-17)
 
 
