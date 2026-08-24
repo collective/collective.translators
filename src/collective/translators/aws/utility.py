@@ -38,7 +38,7 @@ class AWSTranslatorFactory:
             return api.portal.get_registry_record(
                 name="enabled", interface=IAWSTranslateControlPanel
             )
-        except:
+        except KeyError:
             return False
 
     def available_languages(self):
