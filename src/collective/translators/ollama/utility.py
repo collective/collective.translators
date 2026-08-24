@@ -14,8 +14,9 @@ class OllamaFactory:
 
     def is_available(self):
         try:
-            value = api.portal.get_registry_record(name="enabled", interface=IControlPanel)
-            return value
+            return api.portal.get_registry_record(
+                name="enabled", interface=IControlPanel
+            )
         except KeyError:
             return False
 
