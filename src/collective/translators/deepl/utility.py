@@ -37,9 +37,12 @@ class DeeplTranslatorFactory:
         return deepl.Translator(server_url=self.server_url, auth_key=api_key)
 
     def is_available(self):
-        return api.portal.get_registry_record(
-            name="enabled", interface=IDeeplControlPanel
-        )
+        try:
+            return api.portal.get_registry_record(
+                name="enabled", interface=IDeeplControlPanel
+            )
+        except KeyError:
+            return False
 
     def available_languages(self):
         try:

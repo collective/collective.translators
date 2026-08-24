@@ -34,9 +34,12 @@ class AWSTranslatorFactory:
         )
 
     def is_available(self):
-        return api.portal.get_registry_record(
-            name="enabled", interface=IAWSTranslateControlPanel
-        )
+        try:
+            return api.portal.get_registry_record(
+                name="enabled", interface=IAWSTranslateControlPanel
+            )
+        except:
+            return False
 
     def available_languages(self):
         try:

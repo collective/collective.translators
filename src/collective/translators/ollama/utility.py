@@ -13,8 +13,11 @@ class OllamaFactory:
         return api.portal.get_registry_record(name="order", interface=IControlPanel)
 
     def is_available(self):
-        value = api.portal.get_registry_record(name="enabled", interface=IControlPanel)
-        return value
+        try:
+            value = api.portal.get_registry_record(name="enabled", interface=IControlPanel)
+            return value
+        except KeyError:
+            return False
 
     def available_languages(self):
         return []

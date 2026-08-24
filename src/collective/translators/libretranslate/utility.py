@@ -32,9 +32,12 @@ class LibreTranslateTranslatorFactory:
         )
 
     def is_available(self):
-        return api.portal.get_registry_record(
-            name="enabled", interface=ILibreTranslateControlPanel
-        )
+        try:
+            return api.portal.get_registry_record(
+                name="enabled", interface=ILibreTranslateControlPanel
+            )
+        except KeyError:
+            return False
 
     def available_languages(self):
         # TODO

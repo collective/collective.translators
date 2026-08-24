@@ -9,9 +9,12 @@ class GoogleCloudTranslationAPIFactory:
     """implement the external translation using Google Cloud Translation API"""
 
     def is_available(self):
-        return api.portal.get_registry_record(
-            name="enabled", interface=IGoogleTranslateControlPanel
-        )
+        try:
+            return api.portal.get_registry_record(
+                name="enabled", interface=IGoogleTranslateControlPanel
+            )
+        except KeyError:
+            return False
 
     def available_languages(self):
         return []

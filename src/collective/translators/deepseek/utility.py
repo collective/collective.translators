@@ -21,10 +21,12 @@ class DeepSeekFactory:
         return client
 
     def is_available(self):
-        value = api.portal.get_registry_record(
-            name="enabled", interface=IDeepSeekControlPanel
-        )
-        return value
+        try:
+            return api.portal.get_registry_record(
+                name="enabled", interface=IDeepSeekControlPanel
+            )
+        except KeyError:
+            return False
 
     def available_languages(self):
         # Deepseek is a chatbot, so it doesn't have a list of supported languages
