@@ -1,8 +1,80 @@
 # Generated from:
-# https://github.com/plone/meta/tree/main/src/plone/meta/default
+# https://github.com/plone/meta/tree/2.x/src/plone/meta/default
 # See the inline comments on how to expand/tweak this configuration file
 [build-system]
 requires = ["setuptools>=68.2,<80", "wheel"]
+
+# START-MARKER-MANUAL-CONFIG
+# Anything from here until END-MARKER-MANUAL-CONFIG
+# will be kept by plone.meta
+
+[project]
+name = "collective.translators"
+version = "1.0.0a2.dev0"
+description = "Pluggable external translation utilities for Plone"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Framework :: Plone",
+    "Framework :: Plone :: 6.0",
+    "Framework :: Plone :: Addon",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+license = "GPL-2.0-only"
+dynamic = ["readme"]
+requires-python = ">=3.10,<3.14"
+authors = [
+    {name = "Mauro Amico",email = "mauro.amico@gmail.com"},
+]
+dependencies = [
+    "Products.CMFCore",
+    "Products.CMFPlone",
+    "Zope",
+    "plone.api",
+    "plone.app.multilingual",
+    "plone.app.registry",
+    "plone.base",
+    "plone.restapi",
+    "requests",
+]
+keywords = ["Python", "Plone", "CMS"]
+
+[project.entry-points."plone.autoinclude.plugin"]
+target = "plone"
+
+[project.optional-dependencies]
+test = [
+    "plone.app.contenttypes",
+    "plone.app.testing",
+    "plone.restapi[test]",
+    "plone.testing",
+]
+release = [
+    "zest.pocompile",
+    "zest.releaser[recommended]",
+    "zestreleaser.towncrier",
+]
+aws = ["boto3"]
+chatgpt = ["openai"]
+deepseek = ["openai"]
+deepl = ["deepl"]
+ollama = ["ollama"]
+
+[project.urls]
+PyPI = "https://pypi.org/project/collective.translators"
+Source = "https://github.com/collective/collective.translators"
+Tracker = "https://github.com/collective/collective.translators/issues"
+Issues = "https://github.com/collective/convert-setup-py-to-pyproject-toml/issues"
+Changelog = "https://github.com/collective/convert-setup-py-to-pyproject-toml/blob/master/CHANGES.md"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md", "CHANGES.md"], content-type = "text/markdown"}
+# END-MARKER-MANUAL-CONFIG
 
 [tool.towncrier]
 directory = "news/"
