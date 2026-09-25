@@ -21,8 +21,17 @@ extra_lines = """
 [tox]
 test_runner = "pytest"
 test_path = "/tests"
-# use_mxdev = true
-# test_deps_additional = ""
+use_mxdev = true
+# The add-on needs plone.app.multilingual with IExternalTranslationService,
+# which is not in any release yet, so the tests run against the branch of
+# https://github.com/plone/plone.app.multilingual/pull/468 checked out by mxdev.
+constraints_file = "constraints-mxdev.txt"
+test_deps_additional = """
+    -esources/plone.app.multilingual[test]
+"""
+# pip refuses an editable requirement inside the constraints file that tox
+# generates for the package deps.
+constrain_package_deps = false
 test_matrix = { "6.2" = ["*"] }
 
 [github]
