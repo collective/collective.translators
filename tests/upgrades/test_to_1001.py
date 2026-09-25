@@ -1,0 +1,98 @@
+"""Migration from the single monolithic profile to one profile per service."""
+
+from collective.translators import PACKAGE_NAME
+from collective.translators.interfaces import IBrowserLayer
+from collective.translators.upgrades import to_1001
+from plone.browserlayer.utils import register_layer
+from plone.browserlayer.utils import registered_layers
+from plone.registry import field
+from plone.registry import Record
+from plone.registry.interfaces import IRegistry
+from services import AVAILABLE
+from services import MISSING
+from services import SERVICES
+from zope.component import getUtility
+from zope.dottedname.resolve import resolve
+
+import pytest
+
+
+API_KEY = "a-key-the-upgrade-must-not-touch"
+
+
+def api_key_record(service: str) -> str:
+    return f"{SERVICES[service]['schema']}.api_key"
+
+
+@pytest.fixture
+def old_state(portal, setup_tool):
+    """Rebuild what the 1000 profile used to leave in a site.
+
+    Every service had its records in the registry and its configlet in
+    ``portal_controlpanel``, whether its library was installed or not, and the
+    add-on registered a single shared browser layer.
+    """
+    registry = getUtility(IRegistry)
+    controlpanel = portal.portal_controlpanel
+
+    for service, info in SERVICES.items():
+        registry.records[api_key_record(service)] = Record(
+            field.TextLine(title="API Key"), API_KEY
+        )
+        controlpanel.registerConfiglet(
+            id=info["action_id"],
+            name=service,
+            action=f"string:${{portal_url}}/@@{info['action_id']}",
+            category="Products",
+            appId=info["action_id"],
+            permission="Manage portal",
+        )
+
+    if IBrowserLayer not in registered_layers():
+        register_layer(IBrowserLayer, name=PACKAGE_NAME)
+
+    for service in AVAILABLE:
+        setup_tool.unsetLastVersionForProfile(f"{PACKAGE_NAME}.{service}:default")
+    setup_tool.setLastVersionForProfile(f"{PACKAGE_NAME}:default", "1000")
+    return setup_tool
+
+
+class TestUpgradeTo1001:
+    @pytest.fixture(autouse=True)
+    def upgraded(self, old_state):
+        to_1001(old_state)
+
+    @pytest.mark.parametrize("service", AVAILABLE)
+    def test_available_service_keeps_its_settings(self, service):
+        """The upgrade must not overwrite the configured API keys."""
+        registry = getUtility(IRegistry)
+
+        assert registry.records[api_key_record(service)].value == API_KEY
+
+    @pytest.mark.parametrize("service", AVAILABLE)
+    def test_available_service_profile_is_marked_installed(self, service, installer):
+        assert installer.is_product_installed(f"{PACKAGE_NAME}.{service}") is True
+
+    @pytest.mark.parametrize("service", AVAILABLE)
+    def test_available_service_keeps_its_configlet(self, service, controlpanel_actions):
+        assert SERVICES[service]["action_id"] in controlpanel_actions
+
+    @pytest.mark.parametrize("service", AVAILABLE)
+    def test_available_service_layer_is_registered(self, service, browser_layers):
+        layer = resolve(SERVICES[service]["layer"])
+
+        assert layer in browser_layers
+
+    @pytest.mark.parametrize("service", MISSING)
+    def test_missing_service_records_are_purged(self, service):
+        registry = getUtility(IRegistry)
+
+        assert api_key_record(service) not in registry.records
+
+    @pytest.mark.parametrize("service", MISSING)
+    def test_missing_service_configlet_is_purged(self, service, controlpanel_actions):
+        assert SERVICES[service]["action_id"] not in controlpanel_actions
+
+    def test_shared_browserlayer_is_unregistered(self, browser_layers):
+        """Each service now brings its own layer extending the shared one."""
+        assert IBrowserLayer not in browser_layers

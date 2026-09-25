@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        name="portal_controlpanel"
+        i18n:domain="collective.translators"
+>
+
+  <configlet action_id="ollama-translator-controlpanel"
+             appId="ollama-translator-controlpanel"
+             category="Products"
+             title="Ollama Settings"
+             url_expr="string:${portal_url}/@@ollama-translator-controlpanel"
+             visible="True"
+             i18n:attributes="title"
+  >
+    <permission>Manage portal</permission>
+  </configlet>
+
+</object>

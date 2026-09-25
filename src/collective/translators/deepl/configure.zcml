@@ -16,12 +16,14 @@
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.DeeplControlPanel"
       permission="cmf.ManagePortal"
-      layer="..interfaces.IBrowserLayer"
+      layer=".interfaces.IDeeplLayer"
       />
 
   <adapter
       factory=".controlpanel.DeeplRegistryConfigletPanel"
       name="deepl-controlpanel"
       />
+
+  <include file="profiles.zcml" />
 
 </configure>

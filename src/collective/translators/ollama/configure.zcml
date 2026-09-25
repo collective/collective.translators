@@ -17,12 +17,14 @@
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.ControlPanel"
       permission="cmf.ManagePortal"
-      layer="..interfaces.IBrowserLayer"
+      layer=".interfaces.IOllamaLayer"
       />
 
   <adapter
       factory=".controlpanel.RegistryConfigletPanel"
       name="ollama-controlpanel"
       />
+
+  <include file="profiles.zcml" />
 
 </configure>

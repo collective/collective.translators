@@ -27,7 +27,7 @@ class DeepSeekRegistryConfigletPanel(RegistryConfigletPanel):
 
     schema = IDeepSeekControlPanel
     schema_prefix = "deepseek"
-    configlet_id = "deepseek-controlpanel"
+    configlet_id = "deepseek-translator-controlpanel"
     configlet_category_id = "Products"
     title = _("DeepSeek Settings")
     group = "Products"

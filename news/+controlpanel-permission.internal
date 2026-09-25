@@ -1,0 +1,1 @@
+Require `Manage portal` for every control panel view. DeepSeek, Google Translate and LibreTranslate used to require `plone.app.controlpanel.Language`, while their configlet already required `Manage portal`. [mamico]

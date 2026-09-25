@@ -19,8 +19,8 @@ extra_lines = """
 """
 
 [tox]
-# test_runner = "pytest"
-# test_path = "/tests"
+test_runner = "pytest"
+test_path = "/tests"
 # use_mxdev = true
 # test_deps_additional = ""
 test_matrix = { "6.2" = ["*"] }

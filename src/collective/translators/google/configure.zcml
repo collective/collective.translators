@@ -14,13 +14,15 @@
       name="google-translate-controlpanel"
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.GoogleTranslateControlPanel"
-      permission="plone.app.controlpanel.Language"
-      layer="..interfaces.IBrowserLayer"
+      permission="cmf.ManagePortal"
+      layer=".interfaces.IGoogleLayer"
       />
 
   <adapter
       factory=".controlpanel.GoogleTranslateRegistryConfigletPanel"
       name="google-translate-controlpanel"
       />
+
+  <include file="profiles.zcml" />
 
 </configure>

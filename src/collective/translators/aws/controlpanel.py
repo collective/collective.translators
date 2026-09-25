@@ -38,7 +38,7 @@ class AWSTranslateRegistryConfigletPanel(RegistryConfigletPanel):
 
     schema = IAWSTranslateControlPanel
     schema_prefix = "aws_translate"
-    configlet_id = "aws-translate-controlpanel"
+    configlet_id = "aws-translator-controlpanel"
     configlet_category_id = "Products"
     title = _("AWS Translate Settings")
     group = "Products"

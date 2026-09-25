@@ -24,6 +24,9 @@ setup(
             "plone.app.testing",
             "plone.restapi[test]",
             "plone.testing",
+            "pytest",
+            "pytest-cov",
+            "pytest-plone",
         ],
         "release": [
             "zest.releaser[recommended]",

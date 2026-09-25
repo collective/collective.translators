@@ -2,12 +2,13 @@
 <registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
           i18n:domain="collective.translators"
 >
-
-  <records interface="collective.translators.ollama.controlpanel.IControlPanel">
+  <records interface="collective.translators.aws.controlpanel.IAWSTranslateControlPanel">
     <value key="enabled">False</value>
     <value key="order">30</value>
     <value key="source_languages" />
     <value key="target_languages" />
+    <value key="access_key">YOUR_AMAZON_ACCESS_API_KEY</value>
+    <value key="secret_key">YOUR_AMAZON_SECRET_API_KEY</value>
+    <value key="region_name">eu-west-3</value>
   </records>
-
 </registry>

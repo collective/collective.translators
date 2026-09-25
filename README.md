@@ -51,6 +51,31 @@ If you require AWS, Deepl, DeepSeek or Ollama support, install the product requi
 
 Google Translate and Libre Translate support is embedded because they just require HTTP requests to work.
 
+### Add-ons control panel
+
+Every translation service has its own install and uninstall profile, listed as a
+separate entry in the add-ons control panel:
+
+| Add-on | Requires |
+| --- | --- |
+| Collective Translators: AWS Translate | `collective.translators[aws]` |
+| Collective Translators: ChatGPT | `collective.translators[chatgpt]` |
+| Collective Translators: DeepL | `collective.translators[deepl]` |
+| Collective Translators: DeepSeek | `collective.translators[deepseek]` |
+| Collective Translators: Google Translate | nothing |
+| Collective Translators: LibreTranslate | nothing |
+| Collective Translators: Ollama | `collective.translators[ollama]` |
+
+An entry only shows up when the library it needs is importable, so you never get
+a control panel pointing at a service the site cannot use. Installing any of
+them pulls in the shared `collective.translators:default` profile, which is
+hidden because it carries no user visible configuration of its own.
+
+Sites installed with version 1.0.0a2 or older are migrated by the upgrade step
+of the `collective.translators:default` profile, reachable from
+`/portal_setup/manage_upgrades`. Services whose library is installed keep their
+settings; the others lose their leftover registry records and configlets.
+
 ## Adding a New Tool
 
 You can contribute a new translation tool (utility) by either:
@@ -87,14 +112,39 @@ To add a new translation tool (utility) follow these steps:
 3. **(Optional) Create a Control Panel**
 
    - If you want user-configurable settings for your tool, add:
-     - A registry interface in `interfaces.py`.
-     - Registry configuration defaults in `profiles/default/registry/youtool.xml`
-     - Add ontrolpanel registration in `profiles/default/controlpanel.xml`
-     - A control panel form and adapter in `controlpanel/controlpanel.py`, and register it in the relevant ZCML and `controlpanel/configure.zcml`.
+     - A registry interface and a control panel form in `mytool/controlpanel.py`,
+       plus the browser page and the `plone.restapi` adapter in
+       `mytool/configure.zcml`. The `configlet_id` of the adapter must be the
+       same string as the `action_id` of the configlet.
+     - A browser layer extending `collective.translators.interfaces.IBrowserLayer`
+       in `mytool/interfaces.py`, and bind the browser page to it.
    - See the existing tools for concrete examples of each file and configuration.
 
-4. **Test Your Tool**
-   - Restart your site, access your tool's control panel, add your API key or settings, and test translation.
+4. **Ship an Install and an Uninstall Profile**
+
+   - Register both profiles in `mytool/profiles.zcml` and include that file from
+     `mytool/configure.zcml`, so the profiles only exist when your tool does:
+     ```xml
+     <genericsetup:registerProfile
+         name="default"
+         title="Collective Translators: My Tool"
+         provides="Products.GenericSetup.interfaces.EXTENSION"
+         directory="profiles/default"
+         />
+     ```
+   - `mytool/profiles/default/` holds `metadata.xml` (depending on
+     `profile-collective.translators:default`), `browserlayer.xml`,
+     `registry.xml` and `controlpanel.xml`.
+   - `mytool/profiles/uninstall/` holds the same three files with
+     `remove="true"`.
+   - Add the name of your tool to
+     `collective.translators.setuphandlers.SERVICES`, so its uninstall profile
+     stays hidden from the add-ons control panel.
+
+5. **Test Your Tool**
+   - Restart your site, install your add-on from the add-ons control panel,
+     access your tool's control panel, add your API key or settings, and test
+     translation.
 
 Refer to the code of existing tools (e.g. DeepL, AWS, LibreTranslate, DeepSeek, Ollama, Google) for examples of each file and configuration.
 
