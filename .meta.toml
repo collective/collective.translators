@@ -1,21 +1,28 @@
 # Generated from:
-# https://github.com/plone/meta/tree/main/src/plone/meta/default
+# https://github.com/plone/meta/tree/2.x/src/plone/meta/default
 # See the inline comments on how to expand/tweak this configuration file
 [meta]
 template = "default"
-commit-id = "2.3.0"
+commit-id = "2.11.1"
 
 [pyproject]
+extra_lines = """
+[tool.pytest.ini_options]
+testpaths = "tests"
+"""
 codespell_skip = "*.min.js"
 codespell_ignores = "vew"
 dependencies_mappings = []
-dependencies_ignores = "['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'pytest-cov', 'boto3', 'deepl', 'ollama', 'openai']"
+# 'services' is tests/services.py, a local helper module, not a distribution.
+dependencies_ignores = "['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'zest.pocompile', 'pytest-cov', 'boto3', 'deepl', 'ollama', 'openai', 'services']"
 
 [gitignore]
 extra_lines = """
 .lock
 .mxdev_cache/
 .venv/
+temp_auto_push.bat
+temp_interactive_push.bat
 """
 
 [tox]
@@ -31,8 +38,12 @@ test_deps_additional = """
 """
 # pip refuses an editable requirement inside the constraints file that tox
 # generates for the package deps.
-constrain_package_deps = false
-test_matrix = { "6.2" = ["*"] }
+constrain_package_deps = "false"
+# "*" would add 3.14, which requires-python excludes.
+test_matrix = { "6.2" = ["3.13", "3.12", "3.11", "3.10"] }
+# Without it config-package takes the package name from the directory name,
+# which is wrong in a worktree.
+package_name = "collective.translators"
 
 [github]
 py_versions = "[\"3.12\", \"3.11\", \"3.10\"]"

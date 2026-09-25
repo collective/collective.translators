@@ -7,7 +7,6 @@ registered when its library is importable.
 
 from importlib.util import find_spec
 
-
 BASE = "collective.translators"
 
 SERVICES = {

@@ -7,7 +7,6 @@ from plone.browserlayer.utils import unregister_layer
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 
-
 #: For every service: the dotted name of its control panel schema (used as the
 #: registry record prefix) and the ``action_id`` of its configlet.
 SERVICES = {

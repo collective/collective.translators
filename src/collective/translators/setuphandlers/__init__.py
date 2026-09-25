@@ -2,7 +2,6 @@ from collective.translators import PACKAGE_NAME
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
 
-
 #: Services shipping their own install/uninstall profile. Their profiles are
 #: only registered when the matching library is importable, see the
 #: ``zcml:condition`` in ``configure.zcml``.

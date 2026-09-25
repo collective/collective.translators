@@ -16,7 +16,6 @@ from zope.dottedname.resolve import resolve
 
 import pytest
 
-
 API_KEY = "a-key-the-upgrade-must-not-touch"
 
 
