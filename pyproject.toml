@@ -68,9 +68,8 @@ ollama = ["ollama"]
 [project.urls]
 PyPI = "https://pypi.org/project/collective.translators"
 Source = "https://github.com/collective/collective.translators"
-Tracker = "https://github.com/collective/collective.translators/issues"
-Issues = "https://github.com/collective/convert-setup-py-to-pyproject-toml/issues"
-Changelog = "https://github.com/collective/convert-setup-py-to-pyproject-toml/blob/master/CHANGES.md"
+Issues = "https://github.com/collective/collective.translators/issues"
+Changelog = "https://github.com/collective/collective.translators/blob/main/CHANGES.md"
 
 [tool.setuptools.dynamic]
 readme = {file = ["README.md", "CHANGES.md"], content-type = "text/markdown"}
