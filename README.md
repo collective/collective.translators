@@ -1,158 +1,189 @@
 # collective.translators
 
-This package extends [plone.app.multilingual](https://github.com/plone/plone.app.multilingual) by providing pluggable external translation utilities for automatic content translation in Plone. It enables seamless integration with multiple translation providers, allowing site administrators to configure and use services such as DeepL, AWS Translate, LibreTranslate, DeepSeek, and Ollama for translating site content.
+This package extends [plone.app.multilingual](https://github.com/plone/plone.app.multilingual) with pluggable external translation utilities for automatic content translation in Plone.
+It integrates several translation providers, so you can configure DeepL, AWS Translate, LibreTranslate, DeepSeek, Ollama, Google Translate, or ChatGPT and use them to translate your content.
 
-PR #468 (https://github.com/plone/plone.app.multilingual/pull/468) is a strict requirement for this addon.
+This add-on requires [plone.app.multilingual PR #468](https://github.com/plone/plone.app.multilingual/pull/468).
+No released version of `plone.app.multilingual` provides the `IExternalTranslationService` interface yet.
 
-## Translator Utilities
+## Translation services
 
-This package provides pluggable translation utilities for multiple providers. Each utility exposes a similar interface for translating content and checking available languages.
+Each service registers a named utility that provides `IExternalTranslationService`.
+The utilities share the same interface for translating content and for reporting the languages they support, so you can switch between providers without changing anything else.
 
-Each utility is registered as a factory and can be enabled/configured via the Plone control panel. They provide a consistent API for translation tasks, making it easy to switch between providers.
+Configure each service from its own control panel.
 
-### 1. DeepL Translator (`DeeplTranslatorFactory`)
+| Service | Utility name | Factory |
+| --- | --- | --- |
+| AWS Translate | `aws_translate` | `AWSTranslatorFactory` |
+| ChatGPT | `chatgpt_translate` | `ChatGPTFactory` |
+| DeepL | `deepl_translate` | `DeeplTranslatorFactory` |
+| DeepSeek | `deepseek` | `DeepSeekFactory` |
+| Google Translate | `google_translate` | `GoogleCloudTranslationAPIFactory` |
+| LibreTranslate | `libretranslate_translate` | `LibreTranslateTranslatorFactory` |
+| Ollama | `ollama` | `OllamaFactory` |
 
-Integrates with the DeepL API (Free and Pro endpoints supported). Reads the API key from the Plone registry. Supports autodetection of source language and translation of text or HTML.
+### AWS Translate
 
-### 2. AWS Translate (`AWSTranslatorFactory`)
+Uses Amazon AWS Translate.
+Reads the credentials and the region from the Plone registry.
+Falls back to language autodetection when the source language is unknown.
 
-Uses Amazon AWS Translate. Reads credentials and region from the Plone registry. Handles translation and language autodetection fallback.
+### ChatGPT
 
-### 3. LibreTranslate (`LibreTranslateTranslatorFactory`)
+Uses the OpenAI API.
+Reads the credentials from the Plone registry.
 
-Integrates with the open-source LibreTranslate server. The server URL and API key can be configured. Supports autodetection and both text and HTML formats.
+### DeepL
 
-### 4. DeepSeek Translator (`DeepSeekFactory`)
+Uses the DeepL API, on either the Free or the Pro endpoint.
+Reads the API key from the Plone registry.
+Detects the source language on request, and translates both text and HTML.
 
-Integrates with DeepSeek, an LLM-based translation API. Reads the API key from the registry. Uses chat completions for translation.
+### DeepSeek
 
-### 5. Ollama Translator (`OllamaTranslatorFactory`)
+Uses DeepSeek, a translation API backed by a large language model.
+Reads the API key from the Plone registry.
+Translates through chat completions.
 
-Integrates with the Ollama local LLM server. Allows translation using models running on your own hardware. The Ollama server URL and model can be configured. Useful for private or offline translation tasks.
+### Google Translate
 
-### 6. Google Translate (`GoogleTranslateCloudAPIFactory`)
+Uses the Google Cloud Translation API.
 
-Integrates with the Google Translate Cloud API.
+### LibreTranslate
 
-### 7. ChatGPT (`ChatGPTFactory`)
+Uses an [open source LibreTranslate server](https://libretranslate.com/).
+You set the server URL and the API key.
+Detects the source language on request, and translates both text and HTML.
 
-Integrates with the OpenAI API. Reads credentials from the Plone registry.
+### Ollama
 
----
+Uses an Ollama server, so the models run on your own hardware.
+You set the server URL and the model.
+Use this service for private or offline translation.
 
-## Installation and usage
+## Installation
 
-Install this product as a dependency of your project: `collective.translators`
+Add `collective.translators` to the dependencies of your project.
 
-If you require AWS, Deepl, DeepSeek or Ollama support, install the product requiring the required extra:
+Google Translate and LibreTranslate work out of the box, because they only need HTTP requests.
+The other services need a client library, which you pull in through an extra:
 
-- `collective.translators[deepl]`
-- `collective.translators[deepl,aws]`
-
-Google Translate and Libre Translate support is embedded because they just require HTTP requests to work.
+```text
+collective.translators[deepl]
+collective.translators[deepl,aws]
+```
 
 ### Add-ons control panel
 
-Every translation service has its own install and uninstall profile, listed as a
-separate entry in the add-ons control panel:
+Every translation service ships its own install and uninstall profile, and appears as a separate entry in the add-ons control panel.
 
-| Add-on | Requires |
+| Add-on | Extra it needs |
 | --- | --- |
 | Collective Translators: AWS Translate | `collective.translators[aws]` |
 | Collective Translators: ChatGPT | `collective.translators[chatgpt]` |
 | Collective Translators: DeepL | `collective.translators[deepl]` |
 | Collective Translators: DeepSeek | `collective.translators[deepseek]` |
-| Collective Translators: Google Translate | nothing |
-| Collective Translators: LibreTranslate | nothing |
+| Collective Translators: Google Translate | none |
+| Collective Translators: LibreTranslate | none |
 | Collective Translators: Ollama | `collective.translators[ollama]` |
 
-An entry only shows up when the library it needs is importable, so you never get
-a control panel pointing at a service the site cannot use. Installing any of
-them pulls in the shared `collective.translators:default` profile, which is
-hidden because it carries no user visible configuration of its own.
+An entry appears only when the library it needs is importable.
+A control panel therefore never points at a service that your site cannot use.
 
-Sites installed with version 1.0.0a2 or older are migrated by the upgrade step
-of the `collective.translators:default` profile, reachable from
-`/portal_setup/manage_upgrades`. Services whose library is installed keep their
-settings; the others lose their leftover registry records and configlets.
+Installing any service also installs the shared `collective.translators:default` profile as a dependency.
+That profile stays hidden, because it holds no configuration of its own.
 
-## Adding a New Tool
+### Upgrade from 1.0.0a2 or older
 
-You can contribute a new translation tool (utility) by either:
+Older versions installed every service from a single profile.
+To migrate a site, run the upgrade step of the `collective.translators:default` profile from `/portal_setup/manage_upgrades`.
 
-- Proposing it via a pull request (PR) within this package, following the structure below, or
-- Creating a separate Plone add-on package that provides an external translation utility implementing the same interface and registration pattern.
+The upgrade keeps the settings of the services whose library you installed, API keys included.
+It removes the leftover registry records and configlets of the other services.
+Install those services again from the add-ons control panel once you add their library.
 
-To add a new translation tool (utility) follow these steps:
+## Add a new service
 
-1. **Implement and Register Your Utility**
+Contribute a new translation service in either of two ways:
 
-   - Your utility class must implement the `IExternalTranslationService` interface from `plone.app.multilingual.interfaces`.
-   - It should provide at least these methods:
-     - `is_available()`: Returns True if the service is enabled and ready.
-     - `available_languages()`: Returns a list of supported language codes or pairs.
-     - `translate_content(content, source_language, target_language, ...)`: Performs the translation and returns the translated text.
-   - Register your utility in its `configure.zcml` using:
-     ```xml
-     <utility
-         provides="plone.app.multilingual.interfaces.IExternalTranslationService"
-         name="your_tool_name"
-         component=".utility.YourTranslator"
-     />
-     ```
-   - Follow the structure and API of the existing utilities (see `utility.py` and `configure.zcml` in other tool folders) to ensure compatibility.
+- Open a pull request against this package, following the structure below.
+- Publish a separate Plone add-on that provides an external translation utility with the same interface and the same registration pattern.
 
-2. **Register Your Tool**
+Read the code of an existing service, such as DeepL or LibreTranslate, for a concrete example of every file below.
 
-   - In `src/collective/translators/configure.zcml`, add:
-     ```xml
-     <include package=".mytool" />
-     ```
+### 1. Implement and register the utility
 
-3. **(Optional) Create a Control Panel**
+Your utility class must implement `IExternalTranslationService` from `plone.app.multilingual.interfaces`, with at least these methods:
 
-   - If you want user-configurable settings for your tool, add:
-     - A registry interface and a control panel form in `mytool/controlpanel.py`,
-       plus the browser page and the `plone.restapi` adapter in
-       `mytool/configure.zcml`. The `configlet_id` of the adapter must be the
-       same string as the `action_id` of the configlet.
-     - A browser layer extending `collective.translators.interfaces.IBrowserLayer`
-       in `mytool/interfaces.py`, and bind the browser page to it.
-   - See the existing tools for concrete examples of each file and configuration.
+- `is_available()` returns `True` when the service is enabled and ready.
+- `available_languages()` returns the supported language codes, or the supported source and target pairs.
+- `translate_content(content, source_language, target_language)` translates the content and returns the translated text.
 
-4. **Ship an Install and an Uninstall Profile**
+Register a module level instance of the class in `mytool/configure.zcml`:
 
-   - Register both profiles in `mytool/profiles.zcml` and include that file from
-     `mytool/configure.zcml`, so the profiles only exist when your tool does:
-     ```xml
-     <genericsetup:registerProfile
-         name="default"
-         title="Collective Translators: My Tool"
-         provides="Products.GenericSetup.interfaces.EXTENSION"
-         directory="profiles/default"
-         />
-     ```
-   - `mytool/profiles/default/` holds `metadata.xml` (depending on
-     `profile-collective.translators:default`), `browserlayer.xml`,
-     `registry.xml` and `controlpanel.xml`.
-   - `mytool/profiles/uninstall/` holds the same three files with
-     `remove="true"`.
-   - Add the name of your tool to
-     `collective.translators.setuphandlers.SERVICES`, so its uninstall profile
-     stays hidden from the add-ons control panel.
+```xml
+<utility
+    provides="plone.app.multilingual.interfaces.IExternalTranslationService"
+    name="your_tool_name"
+    component=".utility.YourTranslator"
+    />
+```
 
-5. **Test Your Tool**
-   - Restart your site, install your add-on from the add-ons control panel,
-     access your tool's control panel, add your API key or settings, and test
-     translation.
+### 2. Include the package
 
-Refer to the code of existing tools (e.g. DeepL, AWS, LibreTranslate, DeepSeek, Ollama, Google) for examples of each file and configuration.
+Add the include to `src/collective/translators/configure.zcml`.
+Guard it with a `zcml:condition` when your service needs a client library:
+
+```xml
+<include
+    package=".mytool"
+    zcml:condition="installed yourlibrary"
+    />
+```
+
+### 3. Add a control panel
+
+This step is optional.
+Skip it when your service needs no configuration.
+
+Write the registry schema and the control panel form in `mytool/controlpanel.py`, then register the browser page and the `plone.restapi` adapter in `mytool/configure.zcml`.
+Give the adapter a `configlet_id` that matches the `action_id` of the configlet, otherwise `plone.restapi` leaves your panel out of `@controlpanels`.
+
+Declare a browser layer that extends `collective.translators.interfaces.IBrowserLayer` in `mytool/interfaces.py`, and bind the browser page to that layer.
+
+### 4. Ship an install and an uninstall profile
+
+Register both profiles in `mytool/profiles.zcml`, and include that file from `mytool/configure.zcml`.
+The profiles then exist only when the ZCML of your service loads, which is what hides the add-on when the library is missing.
+
+```xml
+<genericsetup:registerProfile
+    name="default"
+    title="Collective Translators: My Tool"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    directory="profiles/default"
+    />
+```
+
+Put `metadata.xml`, `browserlayer.xml`, `registry.xml`, and `controlpanel.xml` in `mytool/profiles/default/`.
+Make `metadata.xml` depend on `profile-collective.translators:default`.
+
+Put `browserlayer.xml`, `registry.xml`, and `controlpanel.xml` in `mytool/profiles/uninstall/`, each one with `remove="true"`.
+
+Add the name of your service to `collective.translators.setuphandlers.SERVICES`, so that its uninstall profile stays hidden from the add-ons control panel.
+
+### 5. Test the service
+
+Restart your site.
+Install your add-on from the add-ons control panel.
+Open the control panel of your service, enter your API key or your settings, and translate a page.
 
 ## Contribute
 
-- [Issue Tracker](https://github.com/collective/collective.translators/issues)
-- [Source Code](https://github.com/collective/collective.translators/)
+- [Issue tracker](https://github.com/collective/collective.translators/issues)
+- [Source code](https://github.com/collective/collective.translators/)
 
 ## License
 
-The project is licensed under GPLv2.
+GPL version 2.
