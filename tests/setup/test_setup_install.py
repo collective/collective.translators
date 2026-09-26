@@ -11,12 +11,26 @@ class TestSetupInstall:
         """Test latest version of default profile."""
         assert profile_last_version(f"{PACKAGE_NAME}:default") == "1001"
 
-    def test_base_profile_is_hidden(self):
-        """The base profile is installed as a dependency, not on its own."""
+    def test_base_profile_is_visible(self):
+        """Only the uninstall profile of the base is hidden.
+
+        A hidden profile is dropped by ``marshall_addons`` before the entry of
+        its product is built, so hiding the base profile would also hide its
+        upgrade steps.
+        """
         hidden = HiddenProfiles().getNonInstallableProfiles()
 
-        assert f"{PACKAGE_NAME}:default" in hidden
+        assert f"{PACKAGE_NAME}:default" not in hidden
         assert f"{PACKAGE_NAME}:uninstall" in hidden
+
+    def test_base_profile_is_listed_in_the_addons_control_panel(
+        self, portal, grant_roles
+    ):
+        """The add-ons control panel shows the base, so it can offer upgrades."""
+        grant_roles(portal, ["Manager"])
+        view = portal.restrictedTraverse("@@prefs_install_products_form")
+
+        assert PACKAGE_NAME in view.marshall_addons()
 
     def test_base_profile_registers_no_browserlayer(self, browser_layers):
         """Each service registers its own layer, the base registers none."""

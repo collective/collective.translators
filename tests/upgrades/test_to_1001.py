@@ -56,6 +56,31 @@ def old_state(portal, setup_tool):
     return setup_tool
 
 
+class TestUpgradeIsOffered:
+    """The add-ons control panel must lead the integrator to the upgrade."""
+
+    def test_upgrade_is_listed(self, old_state, portal, grant_roles):
+        """A site left at 1000 sees the upgrade at /prefs_install_products_form.
+
+        ``marshall_addons`` skips a hidden profile before it builds the entry
+        of its product, so a hidden base profile would keep its upgrade steps
+        out of this list.
+        """
+        grant_roles(portal, ["Manager"])
+        view = portal.restrictedTraverse("@@prefs_install_products_form")
+        upgrades = [addon["id"] for addon in view.get_upgrades()]
+
+        assert PACKAGE_NAME in upgrades
+
+    def test_upgrade_reports_the_new_version(self, old_state, installer):
+        info = installer.upgrade_info(PACKAGE_NAME)
+
+        assert info["installedVersion"] == "1000"
+        assert info["newVersion"] == "1001"
+        assert info["required"] is True
+        assert info["available"] is True
+
+
 class TestUpgradeTo1001:
     @pytest.fixture(autouse=True)
     def upgraded(self, old_state):

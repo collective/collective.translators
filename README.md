@@ -92,12 +92,14 @@ An entry appears only when the library it needs is importable.
 A control panel therefore never points at a service that your site cannot use.
 
 Installing any service also installs the shared `collective.translators:default` profile as a dependency.
-That profile stays hidden, because it holds no configuration of its own.
+That profile holds no configuration of its own, but it stays listed, because the add-ons control panel offers the upgrade steps of a product only through a profile it lists.
+Install it on its own only to migrate a site from an older release.
 
 ### Upgrade from 1.0.0a2 or older
 
 Older versions installed every service from a single profile.
-To migrate a site, run the upgrade step of the `collective.translators:default` profile from `/portal_setup/manage_upgrades`.
+To migrate a site, open `/prefs_install_products_form` and run the upgrade that Collective Translators offers there.
+The same step is also available from `/portal_setup/manage_upgrades`, under the `collective.translators:default` profile.
 
 The upgrade keeps the settings of the services whose library you installed, API keys included.
 It removes the leftover registry records and configlets of the other services.

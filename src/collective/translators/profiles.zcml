@@ -6,8 +6,8 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="Collective Translators: Install"
-      description="Shared base of the translation services. Installed as a dependency of every service profile."
+      title="Collective Translators: shared base"
+      description="Base of the translation services, installed as a dependency of every service. Install it on its own only to run the upgrade steps of an older site."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/default"
       />

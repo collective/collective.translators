@@ -19,15 +19,16 @@ SERVICES = (
 @implementer(INonInstallable)
 class HiddenProfiles:
     def getNonInstallableProfiles(self):
-        """Hide the base and the uninstall profiles.
+        """Hide the uninstall profiles.
 
-        The base profile is installed as a dependency of any service profile,
-        so it does not need its own entry in the add-ons control panel. Listing
-        a profile that is not registered is harmless.
+        The base profile stays visible on purpose. ``marshall_addons`` drops a
+        hidden profile before it builds the entry of its product, so a hidden
+        base profile would never offer its upgrade steps in the add-ons control
+        panel, and those steps are the migration path of the sites installed
+        with the single profile of 1.0.0a2 and older.
+
+        Listing a profile that is not registered is harmless.
         """
-        profiles = [
-            f"{PACKAGE_NAME}:default",
-            f"{PACKAGE_NAME}:uninstall",
-        ]
+        profiles = [f"{PACKAGE_NAME}:uninstall"]
         profiles.extend(f"{PACKAGE_NAME}.{service}:uninstall" for service in SERVICES)
         return profiles
