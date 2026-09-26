@@ -92,8 +92,8 @@ An entry appears only when the library it needs is importable.
 A control panel therefore never points at a service that your site cannot use.
 
 Installing any service also installs the shared `collective.translators:default` profile as a dependency.
-That profile holds no configuration of its own, but it stays listed, because the add-ons control panel offers the upgrade steps of a product only through a profile it lists.
-Install it on its own only to migrate a site from an older release.
+That profile holds no configuration of its own, so it stays out of the list while it has nothing to offer.
+It appears as `Collective Translators: shared base` only while an upgrade of the add-on is waiting to run, because the control panel reaches the upgrade steps of a product only through a profile it lists.
 
 ### Upgrade from 1.0.0a2 or older
 

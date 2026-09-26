@@ -2,7 +2,7 @@
 
 from collective.translators import PACKAGE_NAME
 from collective.translators.interfaces import IBrowserLayer
-from collective.translators.upgrades import to_1001
+from collective.translators.setuphandlers import HiddenProfiles
 from plone.browserlayer.utils import register_layer
 from plone.browserlayer.utils import registered_layers
 from plone.registry import field
@@ -59,6 +59,12 @@ def old_state(portal, setup_tool):
 class TestUpgradeIsOffered:
     """The add-ons control panel must lead the integrator to the upgrade."""
 
+    def test_base_profile_is_visible_while_the_upgrade_is_pending(self, old_state):
+        """The base profile comes out of hiding exactly when it has work to do."""
+        hidden = HiddenProfiles().getNonInstallableProfiles()
+
+        assert f"{PACKAGE_NAME}:default" not in hidden
+
     def test_upgrade_is_listed(self, old_state, portal, grant_roles):
         """A site left at 1000 sees the upgrade at /prefs_install_products_form.
 
@@ -84,7 +90,12 @@ class TestUpgradeIsOffered:
 class TestUpgradeTo1001:
     @pytest.fixture(autouse=True)
     def upgraded(self, old_state):
-        to_1001(old_state)
+        """Run the step the way portal_setup runs it.
+
+        Calling the handler directly would leave the profile at 1000, and it
+        would not prove that the step is registered for this profile.
+        """
+        old_state.upgradeProfile(f"{PACKAGE_NAME}:default")
 
     @pytest.mark.parametrize("service", AVAILABLE)
     def test_available_service_keeps_its_settings(self, service):
@@ -120,3 +131,16 @@ class TestUpgradeTo1001:
     def test_shared_browserlayer_is_unregistered(self, browser_layers):
         """Each service now brings its own layer extending the shared one."""
         assert IBrowserLayer not in browser_layers
+
+    def test_base_profile_hides_itself_again(self):
+        """Once migrated, the base profile has nothing left to offer."""
+        hidden = HiddenProfiles().getNonInstallableProfiles()
+
+        assert f"{PACKAGE_NAME}:default" in hidden
+
+    def test_upgrade_is_no_longer_listed(self, portal, grant_roles):
+        grant_roles(portal, ["Manager"])
+        view = portal.restrictedTraverse("@@prefs_install_products_form")
+        upgrades = [addon["id"] for addon in view.get_upgrades()]
+
+        assert PACKAGE_NAME not in upgrades
