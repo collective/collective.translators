@@ -1,0 +1,1 @@
+Run the tests in CI against the `plone.app.multilingual` branch that provides `IExternalTranslationService`, checked out by mxdev from `tox -e init`, and move the constraints to the Plone 6.2 set the test matrix already names. Without it the ZCML of the add-on cannot be loaded at all against a released `plone.app.multilingual`. [mamico]

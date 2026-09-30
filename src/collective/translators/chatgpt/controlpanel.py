@@ -66,7 +66,7 @@ class ChatGPTRegistryConfigletPanel(RegistryConfigletPanel):
 
     schema = IChatGPTControlPanel
     schema_prefix = "chatgpt"
-    configlet_id = "chatgpt-controlpanel"
+    configlet_id = "chatgpt-translator-controlpanel"
     configlet_category_id = "Products"
     title = _("ChatGPT Settings")
     group = "Products"

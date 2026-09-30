@@ -42,7 +42,7 @@ class DeeplRegistryConfigletPanel(RegistryConfigletPanel):
 
     schema = IDeeplControlPanel
     schema_prefix = "deepl"
-    configlet_id = "deepl-controlpanel"
+    configlet_id = "deepl-translator-controlpanel"
     configlet_category_id = "Products"
     title = _("Deepl Settings")
     group = "Products"
