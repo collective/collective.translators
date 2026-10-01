@@ -1,1 +1,0 @@
-Align `configlet_id` with the `action_id` of the configlet for AWS Translate, ChatGPT, DeepL, DeepSeek, LibreTranslate and Ollama, so the panels are listed by the `@controlpanels` endpoint of `plone.restapi`. [mamico]

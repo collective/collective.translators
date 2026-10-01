@@ -1,1 +1,0 @@
-Run the test suite with pytest instead of zope-testrunner, and declare `pytest`, `pytest-cov` and `pytest-plone` in the `test` extra. Add coverage of the per service profiles and of the upgrade step. [mamico]
