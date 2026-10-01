@@ -13,6 +13,9 @@ The utilities share the same interface for translating content and for reporting
 
 Configure each service from its own control panel.
 
+Google Translate is not part of this package.
+`plone.app.multilingual` already ships it, and you configure it with the Google API key in the *Languages* site setup.
+
 | Service | Utility name | Factory |
 | --- | --- | --- |
 | AWS Translate | `aws_translate` | `AWSTranslatorFactory` |
