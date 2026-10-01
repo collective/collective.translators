@@ -1,16 +1,14 @@
 from .controlpanel import IAWSTranslateControlPanel
+from .interfaces import IAWSLayer
+from collective.translators.base import BaseTranslatorFactory
 from plone import api
 
 import boto3
 
 
-class AWSTranslatorFactory:
-    @property
-    def order(self):
-        return api.portal.get_registry_record(
-            name="order",
-            interface=IAWSTranslateControlPanel,
-        )
+class AWSTranslatorFactory(BaseTranslatorFactory):
+    controlpanel_interface = IAWSTranslateControlPanel
+    layer = IAWSLayer
 
     @property
     def translator(self):
@@ -32,14 +30,6 @@ class AWSTranslatorFactory:
             aws_access_key_id=access_key,
             aws_secret_access_key=secret_key,
         )
-
-    def is_available(self):
-        try:
-            return api.portal.get_registry_record(
-                name="enabled", interface=IAWSTranslateControlPanel
-            )
-        except KeyError:
-            return False
 
     def available_languages(self):
         try:

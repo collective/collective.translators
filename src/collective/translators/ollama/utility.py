@@ -1,24 +1,15 @@
 from .controlpanel import IControlPanel
-from plone import api
+from .interfaces import IOllamaLayer
+from collective.translators.base import BaseTranslatorFactory
 
 import ollama
 
 
-class OllamaFactory:
+class OllamaFactory(BaseTranslatorFactory):
+    controlpanel_interface = IControlPanel
+    layer = IOllamaLayer
     model = "zongwei/gemma3-translator:1b"
     prompt = "Translate the following text from {source_language} to {target_language}: {content}"
-
-    @property
-    def order(self):
-        return api.portal.get_registry_record(name="order", interface=IControlPanel)
-
-    def is_available(self):
-        try:
-            return api.portal.get_registry_record(
-                name="enabled", interface=IControlPanel
-            )
-        except KeyError:
-            return False
 
     def available_languages(self):
         return []

@@ -63,3 +63,5 @@ jobs:
 #  _your own configuration lines_
 #  """
 ##
+    - name: Test without the optional service libraries
+      run: uvx --with tox-uv tox -e minimal

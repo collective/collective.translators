@@ -82,7 +82,7 @@ class TestUpgradeIsOffered:
         info = installer.upgrade_info(PACKAGE_NAME)
 
         assert info["installedVersion"] == "1000"
-        assert info["newVersion"] == "1001"
+        assert info["newVersion"] == "1002"
         assert info["required"] is True
         assert info["available"] is True
 

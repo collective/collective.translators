@@ -60,7 +60,10 @@ def _purge_service(registry, controlpanel, prefix, action_id):
     for key in list(registry.records.keys()):
         if key.startswith(f"{prefix}."):
             del registry.records[key]
-    controlpanel.unregisterConfiglet(action_id)
+    try:
+        controlpanel.unregisterConfiglet(action_id)
+    except KeyError:
+        pass
 
 
 def to_1001(setup_tool):
@@ -91,3 +94,24 @@ def to_1001(setup_tool):
         unregister_layer(PACKAGE_NAME)
     except KeyError:
         pass
+
+
+def to_1002(setup_tool):
+    """Remove Google translator layer and registry records if present."""
+    registry = getUtility(IRegistry)
+    controlpanel = api.portal.get_tool("portal_controlpanel")
+
+    # Unregister Google browser layer if registered
+    try:
+        unregister_layer("collective.translators.google")
+    except KeyError:
+        pass
+
+    # Purge Google registry records and configlet
+    prefix = "collective.translators.google.controlpanel.IGoogleTranslateControlPanel"
+    _purge_service(registry, controlpanel, prefix, "google-translate-controlpanel")
+
+    # Purge any remaining registry records under collective.translators.google
+    for key in list(registry.records.keys()):
+        if key.startswith("collective.translators.google."):
+            del registry.records[key]

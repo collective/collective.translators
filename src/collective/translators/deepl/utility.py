@@ -1,4 +1,6 @@
 from .controlpanel import IDeeplControlPanel
+from .interfaces import IDeeplLayer
+from collective.translators.base import BaseTranslatorFactory
 from plone import api
 
 import deepl
@@ -7,7 +9,9 @@ PRO_API_URL = "https://api.deepl.com"
 FREE_API_URL = "https://api-free.deepl.com"
 
 
-class DeeplTranslatorFactory:
+class DeeplTranslatorFactory(BaseTranslatorFactory):
+    controlpanel_interface = IDeeplControlPanel
+    layer = IDeeplLayer
 
     @property
     def server_url(self):
@@ -23,25 +27,11 @@ class DeeplTranslatorFactory:
         )
 
     @property
-    def order(self):
-        return api.portal.get_registry_record(
-            name="order", interface=IDeeplControlPanel
-        )
-
-    @property
     def translator(self):
         api_key = api.portal.get_registry_record(
             name="api_key", interface=IDeeplControlPanel
         )
         return deepl.Translator(server_url=self.server_url, auth_key=api_key)
-
-    def is_available(self):
-        try:
-            return api.portal.get_registry_record(
-                name="enabled", interface=IDeeplControlPanel
-            )
-        except KeyError:
-            return False
 
     def available_languages(self):
         try:

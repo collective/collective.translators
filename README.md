@@ -1,7 +1,7 @@
 # collective.translators
 
 This package extends [plone.app.multilingual](https://github.com/plone/plone.app.multilingual) with pluggable external translation utilities for automatic content translation in Plone.
-It integrates several translation providers, so you can configure DeepL, AWS Translate, LibreTranslate, DeepSeek, Ollama, Google Translate, or ChatGPT and use them to translate your content.
+It integrates several translation providers, so you can configure DeepL, AWS Translate, LibreTranslate, DeepSeek, Ollama, or ChatGPT and use them to translate your content.
 
 This add-on requires [plone.app.multilingual PR #468](https://github.com/plone/plone.app.multilingual/pull/468).
 No released version of `plone.app.multilingual` provides the `IExternalTranslationService` interface yet.
@@ -19,7 +19,6 @@ Configure each service from its own control panel.
 | ChatGPT | `chatgpt_translate` | `ChatGPTFactory` |
 | DeepL | `deepl_translate` | `DeeplTranslatorFactory` |
 | DeepSeek | `deepseek` | `DeepSeekFactory` |
-| Google Translate | `google_translate` | `GoogleCloudTranslationAPIFactory` |
 | LibreTranslate | `libretranslate_translate` | `LibreTranslateTranslatorFactory` |
 | Ollama | `ollama` | `OllamaFactory` |
 
@@ -46,10 +45,6 @@ Uses DeepSeek, a translation API backed by a large language model.
 Reads the API key from the Plone registry.
 Translates through chat completions.
 
-### Google Translate
-
-Uses the Google Cloud Translation API.
-
 ### LibreTranslate
 
 Uses an [open source LibreTranslate server](https://libretranslate.com/).
@@ -66,7 +61,7 @@ Use this service for private or offline translation.
 
 Add `collective.translators` to the dependencies of your project.
 
-Google Translate and LibreTranslate work out of the box, because they only need HTTP requests.
+LibreTranslate works out of the box, because it only needs HTTP requests.
 The other services need a client library, which you pull in through an extra:
 
 ```text
@@ -84,7 +79,6 @@ Every translation service ships its own install and uninstall profile, and appea
 | Collective Translators: ChatGPT | `collective.translators[chatgpt]` |
 | Collective Translators: DeepL | `collective.translators[deepl]` |
 | Collective Translators: DeepSeek | `collective.translators[deepseek]` |
-| Collective Translators: Google Translate | none |
 | Collective Translators: LibreTranslate | none |
 | Collective Translators: Ollama | `collective.translators[ollama]` |
 
