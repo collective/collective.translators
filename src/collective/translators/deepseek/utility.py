@@ -1,16 +1,14 @@
 from .controlpanel import IDeepSeekControlPanel
+from .interfaces import IDeepSeekLayer
+from collective.translators.base import BaseTranslatorFactory
 from openai import OpenAI
 from plone import api
 
 
-class DeepSeekFactory:
+class DeepSeekFactory(BaseTranslatorFactory):
+    controlpanel_interface = IDeepSeekControlPanel
+    layer = IDeepSeekLayer
     server_url = "https://api.deepseek.com"
-
-    @property
-    def order(self):
-        return api.portal.get_registry_record(
-            name="order", interface=IDeepSeekControlPanel
-        )
 
     @property
     def translator(self):
@@ -19,14 +17,6 @@ class DeepSeekFactory:
         )
         client = OpenAI(api_key=key, base_url=self.server_url)
         return client
-
-    def is_available(self):
-        try:
-            return api.portal.get_registry_record(
-                name="enabled", interface=IDeepSeekControlPanel
-            )
-        except KeyError:
-            return False
 
     def available_languages(self):
         # Deepseek is a chatbot, so it doesn't have a list of supported languages

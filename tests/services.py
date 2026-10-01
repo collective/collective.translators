@@ -38,13 +38,6 @@ SERVICES = {
         "layer": f"{BASE}.deepseek.interfaces.IDeepSeekLayer",
         "panel": f"{BASE}.deepseek.controlpanel.DeepSeekRegistryConfigletPanel",
     },
-    "google": {
-        "library": None,
-        "action_id": "google-translate-controlpanel",
-        "schema": f"{BASE}.google.controlpanel.IGoogleTranslateControlPanel",
-        "layer": f"{BASE}.google.interfaces.IGoogleLayer",
-        "panel": f"{BASE}.google.controlpanel.GoogleTranslateRegistryConfigletPanel",
-    },
     "libretranslate": {
         "library": None,
         "action_id": "libretranslate-translator-controlpanel",

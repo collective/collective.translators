@@ -12,6 +12,15 @@
       handler=".to_1001"
       />
 
+  <genericsetup:upgradeStep
+      title="Remove Google translator layer and registry records"
+      description="Cleans up Google translator layer interface from request/browserlayer registry if present, and removes google registry records and configlet."
+      profile="collective.translators:default"
+      source="1001"
+      destination="1002"
+      handler=".to_1002"
+      />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>

@@ -69,6 +69,7 @@ chatgpt = ["openai"]
 deepseek = ["openai"]
 deepl = ["deepl"]
 ollama = ["ollama"]
+services = ["collective.translators[aws,chatgpt,deepl,deepseek,ollama]"]
 
 [project.urls]
 PyPI = "https://pypi.org/project/collective.translators"

@@ -12,7 +12,6 @@ SERVICES = (
     "chatgpt",
     "deepl",
     "deepseek",
-    "google",
     "libretranslate",
     "ollama",
 )

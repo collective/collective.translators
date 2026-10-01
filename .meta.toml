@@ -45,6 +45,29 @@ test_matrix = { "6.2" = ["3.13", "3.12", "3.11", "3.10"] }
 # which is wrong in a worktree.
 package_name = "collective.translators"
 
+# The default environments install every service library, so the tests that need
+# them run. The ``minimal`` environment installs none, to cover the case where
+# the libraries are missing and the service profiles are not registered.
+test_extras = """
+    test
+    services
+"""
+extra_lines = """
+[testenv:minimal]
+description = run the tests without the optional service libraries
+use_develop = {[base]use_develop}
+skip_install = {[base]skip_install}
+constrain_package_deps = {[base]constrain_package_deps}
+set_env = {[base]set_env}
+deps = {[base]deps}
+commands = {[test_runner]test}
+extras = test
+"""
+
 [github]
+extra_lines = """
+    - name: Test without the optional service libraries
+      run: uvx --with tox-uv tox -e minimal
+"""
 py_versions = "[\"3.12\", \"3.11\", \"3.10\"]"
 jobs = ["qa", "release_ready"]

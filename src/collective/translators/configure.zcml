@@ -40,6 +40,5 @@
       package=".ollama"
       zcml:condition="installed ollama"
       />
-  <include package=".google" />
 
 </configure>
