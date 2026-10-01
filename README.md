@@ -1,5 +1,13 @@
 # collective.translators
 
+[![PyPI](https://img.shields.io/pypi/v/collective.translators)](https://pypi.org/project/collective.translators/)
+[![Python versions](https://img.shields.io/pypi/pyversions/collective.translators)](https://pypi.org/project/collective.translators/)
+[![Plone versions](https://img.shields.io/pypi/frameworkversions/plone/collective.translators)](https://pypi.org/project/collective.translators/)
+[![Tests](https://github.com/collective/collective.translators/actions/workflows/test-matrix.yml/badge.svg)](https://github.com/collective/collective.translators/actions/workflows/test-matrix.yml)
+[![License](https://img.shields.io/pypi/l/collective.translators)](https://github.com/collective/collective.translators/blob/main/LICENSE.GPL)
+[![GitHub issues](https://img.shields.io/github/issues/collective/collective.translators)](https://github.com/collective/collective.translators/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/collective/collective.translators)](https://github.com/collective/collective.translators/commits/main)
+
 This package extends [plone.app.multilingual](https://github.com/plone/plone.app.multilingual) with pluggable external translation utilities for automatic content translation in Plone.
 It integrates several translation providers, so you can configure DeepL, AWS Translate, LibreTranslate, DeepSeek, Ollama, or ChatGPT and use them to translate your content.
 
