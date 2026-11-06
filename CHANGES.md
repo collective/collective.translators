@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a3 (2026-11-06)
+
+
+### Bug fixes
+
+- Use `max_completion_tokens` instead of the deprecated `max_tokens` in the ChatGPT translator, for compatibility with newer OpenAI models. 
+
 ## 1.0.0a2 (2026-10-01)
 
 
