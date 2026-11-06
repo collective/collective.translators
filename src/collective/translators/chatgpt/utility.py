@@ -74,7 +74,7 @@ class ChatGPTFactory(BaseTranslatorFactory):
                         "content": f"Translate the following text from {source_language} to {target_language}: {content}",
                     },
                 ],
-                max_tokens=max_tokens,
+                max_completion_tokens=max_tokens,
                 temperature=temperature,
             )
             translated_text = response.choices[0].message.content

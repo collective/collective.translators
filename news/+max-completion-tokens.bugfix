@@ -1,0 +1,1 @@
+Use `max_completion_tokens` instead of the deprecated `max_tokens` in the ChatGPT translator, for compatibility with newer OpenAI models.
