@@ -1,240 +1,318 @@
-#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-#SOME DESCRIPTIVE TITLE.
-#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# collective.translators
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-12 16:26+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: collective.translators\n"
+"POT-Creation-Date: 2026-10-01 08:49+0000\n"
+"PO-Revision-Date: 2026-10-01 10:50+0200\n"
+"Last-Translator: Mauro Amico <mauro.amico@redturtle.it>\n"
+"Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Language: it\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: collective.translators\n"
 
-#: ../chatgpt/controlpanel.py:11
-#: ../deepl/controlpanel.py:13
-#: ../deepseek/controlpanel.py:12
-#: ../google/controlpanel.py:12
-msgid "API Key"
-msgstr "Chiave API"
-
-#: ../aws/controlpanel.py:31
-msgid "AWS Translate Service"
-msgstr "Servizio di traduzione AWS"
-
-#: ../aws/controlpanel.py:43
-#: ../profiles/default/controlpanel.xml
-msgid "AWS Translate Settings"
-msgstr "Impostazioni AWS Translate"
-
-#: ../aws/controlpanel.py:12
-msgid "Access key"
-msgstr "Chiave di accesso"
-
-#: ../deepl/controlpanel.py:26
-#: ../libretranslate/controlpanel.py:25
-msgid "Auto detect the source language?"
-msgstr ""
-
-#: ../chatgpt/controlpanel.py:26
+#: ./chatgpt/controlpanel.py:20
 msgid "API Base URL"
 msgstr "URL Base API"
 
-#: ../profiles.zcml:13
-msgid "Collective Translators: Install"
-msgstr ""
+#: ./chatgpt/controlpanel.py:14
+#: ./deepl/controlpanel.py:13
+#: ./deepseek/controlpanel.py:12
+msgid "API Key"
+msgstr "Chiave API"
 
-#: ../profiles.zcml:21
-msgid "Collective Translators: Uninstall"
-msgstr ""
+#: ./aws/controlpanel.py:31
+msgid "AWS Translate Service"
+msgstr "Servizio di traduzione AWS"
 
-#: ../chatgpt/controlpanel.py:48
+#: ./aws/controlpanel.py:43
+#: ./aws/profiles/default/controlpanel.xml
+msgid "AWS Translate Settings"
+msgstr "Impostazioni AWS Translate"
+
+#: ./aws/controlpanel.py:12
+msgid "Access key"
+msgstr "Chiave di accesso"
+
+#: ./deepl/controlpanel.py:26
+#: ./libretranslate/controlpanel.py:25
+msgid "Auto detect the source language?"
+msgstr "Rilevare automaticamente la lingua di origine?"
+
+#: ./profiles.zcml:13
+msgid "Base of the translation services, installed as a dependency of every service. Install it on its own only to run the upgrade steps of an older site."
+msgstr "Base dei servizi di traduzione, installata come dipendenza di ogni servizio. Installala da sola solo per eseguire gli step di aggiornamento di un sito più vecchio."
+
+#: ./chatgpt/controlpanel.py:71
+#: ./chatgpt/profiles/default/controlpanel.xml
 msgid "ChatGPT Settings"
 msgstr "Impostazioni ChatGPT"
 
-#: ../chatgpt/controlpanel.py:36
+#: ./chatgpt/controlpanel.py:59
 msgid "ChatGPT Translation Service"
 msgstr "Servizio di traduzione ChatGPT"
 
-#: ../deepseek/controlpanel.py:48
-#: ../profiles/default/controlpanel.xml
-msgid "ChatGPT Settings"
-msgstr "Impostazioni ChatGPT"
+#: ./aws/profiles.zcml:13
+msgid "Collective Translators: AWS Translate"
+msgstr "Collective Translators: AWS Translate"
 
-#: ../deepseek/controlpanel.py:32
-#: ../profiles/default/controlpanel.xml
-msgid "DeepSeek Settings"
-msgstr "Impostazioni DeepSeek"
+#: ./aws/profiles.zcml:21
+msgid "Collective Translators: AWS Translate (uninstall)"
+msgstr "Collective Translators: AWS Translate (disinstallazione)"
 
-#: ../deepseek/controlpanel.py:20
-msgid "DeepSeek Translation Service"
-msgstr "Servizio di traduzione DeepSeek"
+#: ./chatgpt/profiles.zcml:13
+msgid "Collective Translators: ChatGPT"
+msgstr "Collective Translators: ChatGPT"
 
-#: ../deepl/controlpanel.py:47
-#: ../profiles/default/controlpanel.xml
-msgid "Deepl Settings"
-msgstr "Impostazioni Deepl"
+#: ./chatgpt/profiles.zcml:21
+msgid "Collective Translators: ChatGPT (uninstall)"
+msgstr "Collective Translators: ChatGPT (disinstallazione)"
 
-#: ../deepl/controlpanel.py:35
-msgid "Deepl Translation Service"
-msgstr "Servizio di traduzione Deepl"
+#: ./deepl/profiles.zcml:13
+msgid "Collective Translators: DeepL"
+msgstr "Collective Translators: DeepL"
 
-#: ../interfaces.py:15
-msgid "Enabled"
-msgstr "Abilitato"
+#: ./deepl/profiles.zcml:21
+msgid "Collective Translators: DeepL (uninstall)"
+msgstr "Collective Translators: DeepL (disinstallazione)"
 
-#: ../google/controlpanel.py:32
-#: ../profiles/default/controlpanel.xml
-msgid "Google Translate Settings"
-msgstr ""
+#: ./deepseek/profiles.zcml:13
+msgid "Collective Translators: DeepSeek"
+msgstr "Collective Translators: DeepSeek"
 
-#: ../google/controlpanel.py:20
-msgid "Google Translate Translation Service"
-msgstr ""
+#: ./deepseek/profiles.zcml:21
+msgid "Collective Translators: DeepSeek (uninstall)"
+msgstr "Collective Translators: DeepSeek (disinstallazione)"
 
-#: ../deepl/controlpanel.py:20
-msgid "If disabled it will use the free API."
-msgstr ""
+#: ./libretranslate/profiles.zcml:13
+msgid "Collective Translators: LibreTranslate"
+msgstr "Collective Translators: LibreTranslate"
 
-#: ../deepl/controlpanel.py:27
-#: ../libretranslate/controlpanel.py:26
-msgid "If enabled the source language will be autodetected."
-msgstr ""
+#: ./libretranslate/profiles.zcml:21
+msgid "Collective Translators: LibreTranslate (uninstall)"
+msgstr "Collective Translators: LibreTranslate (disinstallazione)"
 
-#: ../interfaces.py:16
-msgid "If enabled this service will be enabled used to get the translations."
-msgstr ""
+#: ./ollama/profiles.zcml:13
+msgid "Collective Translators: Ollama"
+msgstr "Collective Translators: Ollama"
 
-#: ../libretranslate/controlpanel.py:34
-msgid "Libre Translate Service"
-msgstr "Servizio di traduzione Libre"
+#: ./ollama/profiles.zcml:21
+msgid "Collective Translators: Ollama (uninstall)"
+msgstr "Collective Translators: Ollama (disinstallazione)"
 
-#: ../libretranslate/controlpanel.py:46
-msgid "Libre Translate Settings"
-msgstr "Impostazioni Libre Translate"
+#: ./profiles.zcml:21
+msgid "Collective Translators: Uninstall"
+msgstr "Collective Translators: Disinstallazione"
 
-#: ../profiles/default/controlpanel.xml
-msgid "LibreTranslate Settings"
-msgstr ""
+#: ./profiles.zcml:13
+msgid "Collective Translators: shared base"
+msgstr "Collective Translators: base condivisa"
 
-#: ../ollama/controlpanel.py:34
-msgid "Ollama Settings"
-msgstr ""
+#: ./aws/profiles.zcml:13
+msgid "Configure the AWS Translate translation service."
+msgstr "Configura il servizio di traduzione AWS Translate."
 
-#: ../ollama/controlpanel.py:22
-msgid "Ollama Translation Service"
-msgstr ""
+#: ./chatgpt/profiles.zcml:13
+msgid "Configure the ChatGPT translation service."
+msgstr "Configura il servizio di traduzione ChatGPT."
 
-#: ../interfaces.py:23
-msgid "Order"
-msgstr "Ordine"
+#: ./deepl/profiles.zcml:13
+msgid "Configure the DeepL translation service."
+msgstr "Configura il servizio di traduzione DeepL."
 
-#: ../interfaces.py:24
-msgid "Ordering of this service. The lower the sooner this service will be used."
-msgstr ""
+#: ./deepseek/profiles.zcml:13
+msgid "Configure the DeepSeek translation service."
+msgstr "Configura il servizio di traduzione DeepSeek."
 
-#: ../profiles.zcml:13
-msgid "Package to configure different translation services to be used with plone.app.multilingual"
-msgstr ""
+#: ./libretranslate/profiles.zcml:13
+msgid "Configure the LibreTranslate translation service."
+msgstr "Configura il servizio di traduzione LibreTranslate."
 
-#: ../aws/controlpanel.py:22
-msgid "Region"
-msgstr "Regione"
+#: ./ollama/profiles.zcml:13
+msgid "Configure the Ollama translation service."
+msgstr "Configura il servizio di traduzione Ollama."
 
-#: ../aws/controlpanel.py:17
-msgid "Secret key"
-msgstr "Chiave segreta"
-
-#: ../interfaces.py:32
-msgid "Select which source languages does this service allow"
-msgstr ""
-
-#: ../chatgpt/controlpanel.py:11
-msgid "The API key for the ChatGPT service."
-msgstr "La chiave API per il servizio ChatGPT."
-
-#: ../chatgpt/controlpanel.py:26
-msgid "The base URL for the ChatGPT API (e.g., https://api.openai.com/v1). Leave empty to use default."
-msgstr "L'URL di base per l'API ChatGPT (ad es. https://api.openai.com/v1). Lascia vuoto per usare il valore predefinito."
-
-#: ../chatgpt/controlpanel.py:32
-msgid "The ChatGPT model to use (e.g., gpt-4o, gpt-4-turbo, gpt-3.5-turbo)."
-msgstr "Il modello ChatGPT da utilizzare (ad es. gpt-4o, gpt-4-turbo, gpt-3.5-turbo)."
-
-#: ../interfaces.py:42
-msgid "Select which target languages does this service allow"
-msgstr ""
-
-#: ../interfaces.py:31
-msgid "Source languages"
-msgstr "Lingue di origine"
-
-#: ../interfaces.py:41
-msgid "Target languages"
-msgstr "Lingue di destinazione"
-
-#: ../deepseek/controlpanel.py:13
-msgid "The API key for the DeepSeek service."
-msgstr ""
-
-#: ../deepl/controlpanel.py:14
-msgid "The API key for the Deepl translation service."
-msgstr "La chiave API per il servizio di traduzione Deepl."
-
-#: ../google/controlpanel.py:13
-msgid "The API key for the Google Translate service."
-msgstr ""
-
-#: ../libretranslate/controlpanel.py:14
-msgid "The API key for the Libre translate translation service."
-msgstr "La chiave API per il servizio di traduzione Libre."
-
-#: ../aws/controlpanel.py:13
-msgid "The key for the access to AWS Translate service."
-msgstr "La chiave per l'accesso al servizio AWS Translate."
-
-#: ../aws/controlpanel.py:23
-msgid "The region for the AWS Translate service."
-msgstr "La regione per il servizio AWS Translate."
-
-#: ../aws/controlpanel.py:18
-msgid "The secret key for the access to AWS Translate service."
-msgstr "La chiave segreta per l'accesso al servizio AWS Translate."
-
-#: ../chatgpt/controlpanel.py:38
-msgid "Model"
-msgstr "Modello"
-
-#: ../chatgpt/controlpanel.py:44
-msgid "Temperature"
-msgstr "Temperatura"
-
-#: ../chatgpt/controlpanel.py:44
+#: ./chatgpt/controlpanel.py:38
 msgid "Controls randomness: 0 for deterministic, higher values for more random. Value between 0 and 2."
 msgstr "Controlla la casualità: 0 per deterministico, valori più alti per più casualità. Valore tra 0 e 2."
 
-#: ../chatgpt/controlpanel.py:52
+#: ./deepseek/controlpanel.py:32
+#: ./deepseek/profiles/default/controlpanel.xml
+msgid "DeepSeek Settings"
+msgstr "Impostazioni DeepSeek"
+
+#: ./deepseek/controlpanel.py:20
+msgid "DeepSeek Translation Service"
+msgstr "Servizio di traduzione DeepSeek"
+
+#: ./deepl/controlpanel.py:47
+#: ./deepl/profiles/default/controlpanel.xml
+msgid "Deepl Settings"
+msgstr "Impostazioni Deepl"
+
+#: ./deepl/controlpanel.py:35
+msgid "Deepl Translation Service"
+msgstr "Servizio di traduzione Deepl"
+
+#: ./interfaces.py:15
+msgid "Enabled"
+msgstr "Abilitato"
+
+#: ./deepl/controlpanel.py:20
+msgid "If disabled it will use the free API."
+msgstr "Se disabilitato, usa l'API gratuita."
+
+#: ./deepl/controlpanel.py:27
+#: ./libretranslate/controlpanel.py:26
+msgid "If enabled the source language will be autodetected."
+msgstr "Se abilitato, la lingua di origine viene rilevata automaticamente."
+
+#: ./interfaces.py:16
+msgid "If enabled this service will be enabled used to get the translations."
+msgstr "Se abilitato, questo servizio viene usato per ottenere le traduzioni."
+
+#: ./libretranslate/controlpanel.py:34
+msgid "Libre Translate Service"
+msgstr "Servizio di traduzione Libre"
+
+#: ./libretranslate/controlpanel.py:46
+msgid "Libre Translate Settings"
+msgstr "Impostazioni Libre Translate"
+
+#: ./libretranslate/profiles/default/controlpanel.xml
+msgid "LibreTranslate Settings"
+msgstr "Impostazioni LibreTranslate"
+
+#: ./chatgpt/controlpanel.py:48
 msgid "Max Tokens"
 msgstr "Token Massimi"
 
-#: ../chatgpt/controlpanel.py:52
+#: ./chatgpt/controlpanel.py:49
 msgid "Maximum number of tokens to generate in the translation response."
 msgstr "Numero massimo di token da generare nella risposta di traduzione."
 
-#: ../libretranslate/controlpanel.py:19
+#: ./chatgpt/controlpanel.py:28
+msgid "Model"
+msgstr "Modello"
+
+#: ./ollama/controlpanel.py:34
+#: ./ollama/profiles/default/controlpanel.xml
+msgid "Ollama Settings"
+msgstr "Impostazioni Ollama"
+
+#: ./ollama/controlpanel.py:22
+msgid "Ollama Translation Service"
+msgstr "Servizio di traduzione Ollama"
+
+#: ./interfaces.py:23
+msgid "Order"
+msgstr "Ordine"
+
+#: ./interfaces.py:24
+msgid "Ordering of this service. The lower the sooner this service will be used."
+msgstr "Ordine di questo servizio. Più è basso, prima viene usato."
+
+#: ./aws/controlpanel.py:22
+msgid "Region"
+msgstr "Regione"
+
+#: ./profiles.zcml:21
+msgid "Remove the shared base. Uninstall the single services first."
+msgstr "Rimuove la base condivisa. Disinstalla prima i singoli servizi."
+
+#: ./aws/controlpanel.py:17
+msgid "Secret key"
+msgstr "Chiave segreta"
+
+#: ./interfaces.py:32
+msgid "Select which source languages does this service allow"
+msgstr "Seleziona quali lingue di origine ammette questo servizio"
+
+#: ./interfaces.py:42
+msgid "Select which target languages does this service allow"
+msgstr "Seleziona quali lingue di destinazione ammette questo servizio"
+
+#: ./interfaces.py:31
+msgid "Source languages"
+msgstr "Lingue di origine"
+
+#: ./interfaces.py:41
+msgid "Target languages"
+msgstr "Lingue di destinazione"
+
+#: ./chatgpt/controlpanel.py:37
+msgid "Temperature"
+msgstr "Temperatura"
+
+#: ./chatgpt/controlpanel.py:15
+msgid "The API key for the ChatGPT service."
+msgstr "La chiave API per il servizio ChatGPT."
+
+#: ./deepseek/controlpanel.py:13
+msgid "The API key for the DeepSeek service."
+msgstr "La chiave API per il servizio DeepSeek."
+
+#: ./deepl/controlpanel.py:14
+msgid "The API key for the Deepl translation service."
+msgstr "La chiave API per il servizio di traduzione Deepl."
+
+#: ./libretranslate/controlpanel.py:14
+msgid "The API key for the Libre translate translation service."
+msgstr "La chiave API per il servizio di traduzione Libre."
+
+#: ./chatgpt/controlpanel.py:29
+msgid "The ChatGPT model to use (e.g., gpt-4o, gpt-4-turbo, gpt-3.5-turbo)."
+msgstr "Il modello ChatGPT da utilizzare (ad es. gpt-4o, gpt-4-turbo, gpt-3.5-turbo)."
+
+#: ./chatgpt/controlpanel.py:21
+msgid "The base URL for the ChatGPT API (e.g., https://api.openai.com/v1). Leave empty to use default."
+msgstr "L'URL di base per l'API ChatGPT (ad es. https://api.openai.com/v1). Lascia vuoto per usare il valore predefinito."
+
+#: ./aws/controlpanel.py:13
+msgid "The key for the access to AWS Translate service."
+msgstr "La chiave per l'accesso al servizio AWS Translate."
+
+#: ./aws/controlpanel.py:23
+msgid "The region for the AWS Translate service."
+msgstr "La regione per il servizio AWS Translate."
+
+#: ./aws/controlpanel.py:18
+msgid "The secret key for the access to AWS Translate service."
+msgstr "La chiave segreta per l'accesso al servizio AWS Translate."
+
+#: ./libretranslate/controlpanel.py:19
 msgid "URL of the Libre Translate instance"
-msgstr ""
+msgstr "URL dell'istanza di Libre Translate"
 
-#: ../profiles.zcml:21
-msgid "Uninstall translation services."
-msgstr ""
+#: ./aws/profiles.zcml:21
+msgid "Uninstall the AWS Translate translation service."
+msgstr "Disinstalla il servizio di traduzione AWS Translate."
 
-#: ../deepl/controlpanel.py:19
+#: ./chatgpt/profiles.zcml:21
+msgid "Uninstall the ChatGPT translation service."
+msgstr "Disinstalla il servizio di traduzione ChatGPT."
+
+#: ./deepl/profiles.zcml:21
+msgid "Uninstall the DeepL translation service."
+msgstr "Disinstalla il servizio di traduzione DeepL."
+
+#: ./deepseek/profiles.zcml:21
+msgid "Uninstall the DeepSeek translation service."
+msgstr "Disinstalla il servizio di traduzione DeepSeek."
+
+#: ./libretranslate/profiles.zcml:21
+msgid "Uninstall the LibreTranslate translation service."
+msgstr "Disinstalla il servizio di traduzione LibreTranslate."
+
+#: ./ollama/profiles.zcml:21
+msgid "Uninstall the Ollama translation service."
+msgstr "Disinstalla il servizio di traduzione Ollama."
+
+#: ./deepl/controlpanel.py:19
 msgid "Use the Pro API?"
-msgstr ""
+msgstr "Usare l'API Pro?"

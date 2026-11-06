@@ -41,7 +41,7 @@ class LibreTranslateRegistryConfigletPanel(RegistryConfigletPanel):
 
     schema = ILibreTranslateControlPanel
     schema_prefix = "libretranslate"
-    configlet_id = "libre-translate-controlpanel"
+    configlet_id = "libretranslate-translator-controlpanel"
     configlet_category_id = "Products"
     title = _("Libre Translate Settings")
     group = "Products"

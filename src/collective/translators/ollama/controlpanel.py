@@ -29,7 +29,7 @@ class RegistryConfigletPanel(RegistryConfigletPanel):
 
     schema = IControlPanel
     schema_prefix = "ollama"
-    configlet_id = "ollama-controlpanel"
+    configlet_id = "ollama-translator-controlpanel"
     configlet_category_id = "Products"
     title = _("Ollama Settings")
     group = "Products"

@@ -1,17 +1,15 @@
 from .controlpanel import ILibreTranslateControlPanel
+from .interfaces import ILibreTranslateLayer
+from collective.translators.base import BaseTranslatorFactory
 from plone import api
 
 import requests
 
 
-class LibreTranslateTranslatorFactory:
+class LibreTranslateTranslatorFactory(BaseTranslatorFactory):
+    controlpanel_interface = ILibreTranslateControlPanel
+    layer = ILibreTranslateLayer
     timeout = 5
-
-    @property
-    def order(self):
-        return api.portal.get_registry_record(
-            name="order", interface=ILibreTranslateControlPanel
-        )
 
     @property
     def api_key(self):
@@ -29,11 +27,6 @@ class LibreTranslateTranslatorFactory:
     def autodetect_source_language(self):
         return api.portal.get_registry_record(
             name="autodetect_source_language", interface=ILibreTranslateControlPanel
-        )
-
-    def is_available(self):
-        return api.portal.get_registry_record(
-            name="enabled", interface=ILibreTranslateControlPanel
         )
 
     def available_languages(self):

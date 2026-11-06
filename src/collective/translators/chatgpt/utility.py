@@ -1,16 +1,15 @@
 from .controlpanel import IChatGPTControlPanel
+from .interfaces import IChatGPTLayer
+from collective.translators.base import BaseTranslatorFactory
 from openai import OpenAI
 from plone import api
 
 
-class ChatGPTFactory:
+class ChatGPTFactory(BaseTranslatorFactory):
     """Factory for ChatGPT translation service."""
 
-    @property
-    def order(self):
-        return api.portal.get_registry_record(
-            name="order", interface=IChatGPTControlPanel
-        )
+    controlpanel_interface = IChatGPTControlPanel
+    layer = IChatGPTLayer
 
     @property
     def translator(self):
@@ -26,13 +25,6 @@ class ChatGPTFactory:
         if base_url:
             return OpenAI(api_key=api_key, base_url=base_url)
         return OpenAI(api_key=api_key)
-
-    def is_available(self):
-        """Check if the service is enabled."""
-        value = api.portal.get_registry_record(
-            name="enabled", interface=IChatGPTControlPanel
-        )
-        return value
 
     def available_languages(self):
         """ChatGPT supports a wide range of languages.

@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.translators"
+    >
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Collective Translators: DeepSeek"
+      description="Configure the DeepSeek translation service."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Collective Translators: DeepSeek (uninstall)"
+      description="Uninstall the DeepSeek translation service."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      />
+
+</configure>

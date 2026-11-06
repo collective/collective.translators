@@ -6,8 +6,8 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="Collective Translators: Install"
-      description="Package to configure different translation services to be used with plone.app.multilingual"
+      title="Collective Translators: shared base"
+      description="Base of the translation services, installed as a dependency of every service. Install it on its own only to run the upgrade steps of an older site."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/default"
       />
@@ -15,7 +15,7 @@
   <genericsetup:registerProfile
       name="uninstall"
       title="Collective Translators: Uninstall"
-      description="Uninstall translation services."
+      description="Remove the shared base. Uninstall the single services first."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/uninstall"
       />

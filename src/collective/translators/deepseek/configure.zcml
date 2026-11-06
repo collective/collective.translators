@@ -16,13 +16,15 @@
       name="deepseek-translator-controlpanel"
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.DeepSeekControlPanel"
-      permission="plone.app.controlpanel.Language"
-      layer="..interfaces.IBrowserLayer"
+      permission="cmf.ManagePortal"
+      layer=".interfaces.IDeepSeekLayer"
       />
 
   <adapter
       factory=".controlpanel.DeepSeekRegistryConfigletPanel"
       name="deepseek-controlpanel"
       />
+
+  <include file="profiles.zcml" />
 
 </configure>
